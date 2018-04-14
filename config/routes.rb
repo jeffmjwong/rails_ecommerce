@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  root to: "users#index"
-  get "/products", to: "products#index", as: "products_home_page"
+  root to: "products#home"
+  get "/products", to: "products#home", as: "products_home_page"
 end

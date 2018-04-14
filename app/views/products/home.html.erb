@@ -1,0 +1,37 @@
+<h1>Welcome To Market Place!</h1>
+
+<h2>All the products are here</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Visibility</th>
+      <th>Unitprice</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.quantity %></td>
+        <td><%= product.visibility %></td>
+        <td><%= product.unitprice %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'View My Products', user_products_path(current_user) %><br>
+<%= link_to 'View My Cart' %><br>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
