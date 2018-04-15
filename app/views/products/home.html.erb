@@ -37,6 +37,9 @@
 
 <br>
 
+<p>
+  <%= link_to 'Manage Users', users_path if current_user.admin %>
+</p>
 <%= link_to 'Go To My User Home Page', user_path(current_user) %><br>
 <%= link_to 'View My Cart' %><br>
 <%= link_to 'Logout', destroy_user_session_path, method: :delete %>

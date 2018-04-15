@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :check_admin, only: [:index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_current_user, only: [:show]
 
   def index
     @users = User.all
@@ -40,5 +42,15 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:admin)
+    end
+
+    def check_admin
+      redirect_to root_path if !current_user.admin
+    end
+
+    def check_current_user
+      if !current_user.admin
+        redirect_to user_path(current_user) if current_user != @user
+      end
     end
 end
