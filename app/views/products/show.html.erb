@@ -6,24 +6,33 @@
 </p>
 
 <p>
+  <strong>Seller:</strong>
+  <% if @product.user == current_user %>
+    You (<%= @product.user.username %>)
+  <% else %>
+    <%= @product.user.username %>
+  <% end %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
 
 <p>
-  <strong>Quantity:</strong>
+  <strong>Quantity Available:</strong>
   <%= @product.quantity %>
 </p>
 
 <p>
-  <strong>Visibility:</strong>
-  <%= @product.visibility %>
+  <strong>Price per Unit:</strong>
+  $<%= @product.unitprice %>
 </p>
 
 <p>
-  <strong>Unitprice:</strong>
-  <%= @product.unitprice %>
+  <%= link_to 'Edit Product', edit_product_path(@product) if @product.user == current_user %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<p>
+  <%= link_to 'Add To My Cart' if @product.user != current_user %>
+</p>
+<%= link_to 'Back To Market Place Home Page', root_path %>

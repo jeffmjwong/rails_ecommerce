@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>Products In My Shop</h1>
 
 <table>
   <thead>
@@ -32,5 +32,8 @@
 
 <br>
 
-<%= link_to 'Add A New Product', new_product_path %>
+<%= link_to 'Add A New Product', new_product_path %> |
+<%= link_to 'Go To My Cart' %> |
+<%= link_to 'Go To My User Home Page', user_path(current_user) %> |
+<%= link_to 'Go To Market Place Home Page', root_path %> |
 <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
