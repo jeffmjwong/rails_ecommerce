@@ -8,7 +8,7 @@
 <p>
   <strong>Seller:</strong>
   <% if @product.user == current_user %>
-    You (<%= @product.user.username %>)
+    <%= @product.user.username %> (You)
   <% else %>
     <%= @product.user.username %>
   <% end %>

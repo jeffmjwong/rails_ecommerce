@@ -19,7 +19,7 @@
       <% if product.visibility %>
         <tr>
           <td><%= product.name %></td>
-          <td><%= product.user.username %></td>
+          <td><%= link_to product.user.username, user_path(product.user) %></td>
           <td>
             <% if product.quantity > 0 %>
               <%= product.quantity %>

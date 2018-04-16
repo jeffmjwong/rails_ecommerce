@@ -17,9 +17,25 @@
 </p>
 
 <% if @user != current_user %>
-  <p>
-    Items sold by this user:
-  </p>
+  <div>
+    <p>Items sold by this user:</p>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <% @user.products.each do |product| %>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.unitprice %></td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
 <% end %>
 
 <% if @user == current_user %>
