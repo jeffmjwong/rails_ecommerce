@@ -36,6 +36,11 @@
     <%= form.text_field :unitprice, id: :product_unitprice %>
   </div>
 
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.file_field :photo, id: :product_photo %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
