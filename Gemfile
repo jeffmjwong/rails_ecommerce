@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -61,3 +61,6 @@ gem "carrierwave", "~> 1.2"
 
 # Added at 2018-04-16 19:30:55 +1000 by jeffwong:
 gem "cloudinary", "~> 1.9"
+
+# Added at 2018-04-19 20:46:20 +1000 by jeffwong:
+gem "pg", "~> 1.0"

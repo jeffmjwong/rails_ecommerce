@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180416093534) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180416093534) do
     t.float "unitprice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "photo"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -45,4 +48,5 @@ ActiveRecord::Schema.define(version: 20180416093534) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "products", "users"
 end
