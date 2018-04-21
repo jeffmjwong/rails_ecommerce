@@ -1,3 +1,59 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+hr {
+  color: hsla(0, 0%, 80%, 1)
+}
+
+body.products-home {
+  margin: 0 !important;
+}
+
+div.home-header {
+  height: 100vh;
+  background: url(image-path("home-background.jpg")) no-repeat center fixed;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  div.home-header-website, div.home-header-title {
+    grid-column: 2 / 5;
+    display: flex;
+    justify-content: center;
+  }
+  div.home-header-website > p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-top: 2em;
+    span.black {
+      color: black;
+    }
+  }
+  div.home-header-title > p {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2em;
+    color: white;
+  }
+}
+
+div.home-main {
+  div.home-main-description {
+    padding: 3em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    p {
+      width: 100%;
+      margin: 0.5em 0 0.2em 0;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    p.tc {
+      font-size: 0.8rem;
+      color: hsla(0, 0%, 60%, 1)
+    }
+  }
+}
