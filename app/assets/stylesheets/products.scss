@@ -51,17 +51,13 @@ div.home-banner {
       font-size: 2rem;
       text-align: center;
     }
-    p.tc {
-      font-size: 0.8rem;
-      color: hsla(0, 0%, 60%, 1)
-    }
   }
 }
 
 div.home-main {
   -webkit-box-shadow: 0 0.25em 0.6em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
           box-shadow: 0 0.25em 0.6em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
-  padding: 2em 0;
+  padding: 2em 1em;
   div.home-main-new-release {
     padding-left: 1.5em;
     p {
@@ -72,20 +68,32 @@ div.home-main {
     list-style-type: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     li {
       padding: 0.8em;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      div a:hover {
-        opacity: 0.7;
+      div.product-image-container a img {
+        border-radius: 100em;
       }
-      p {
+      div.product-image-container:hover {
+        opacity: 0.7;
+        a:hover {
+          background-color: inherit;
+        }
+      }
+      div.product-info-container {
         width: 100%;
-        margin: 0;
-        padding-left: 0.5em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        p {
+          width: 100%;
+          margin: 0;
+          text-align: center;
+        }
       }
     }
   }

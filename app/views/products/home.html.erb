@@ -10,7 +10,6 @@
 <div class="home-banner">
   <div class="home-banner-description">
     <p>Buy without limits. Sell without limits.</p>
-    <!-- <p class="tc">* Subject to terms and conditions.</p> -->
   </div>
 </div>
 
@@ -22,9 +21,13 @@
     <% @products.each do |product| %>
       <% if product.visibility %>
         <li>
-          <div><%= link_to image_tag(product.photo_url(:homepage)), product_path(product) %></div>
-          <p><%= product.name %></p>
-          <p>$<%= sprintf('%.2f', product.unitprice) %></p>
+          <div class="product-image-container">
+            <%= link_to image_tag(product.photo_url(:homepage)), product_path(product) %>
+          </div>
+          <div class="product-info-container">
+            <p><%= product.name %></p>
+            <p>$<%= sprintf('%.2f', product.unitprice) %></p>
+          </div>
         </li>
       <% end %>
     <% end %>
