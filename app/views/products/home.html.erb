@@ -16,7 +16,7 @@
         (<%= link_to 'Logout', destroy_user_session_path, method: :delete %>)
       </p>
     <% else %>
-      <p>Login</p>
+      <p><%= link_to 'Login', new_user_session_path %></p>
     <% end %>
   </div>
   <% if user_signed_in? %>
@@ -62,5 +62,7 @@
 <br>
 
 <p>
-  <%= link_to 'Manage Users', users_path if current_user.admin %>
+  <% if user_signed_in? %>
+    <%= link_to 'Manage Users', users_path if current_user.admin %>
+  <% end %>
 </p>
