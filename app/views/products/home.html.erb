@@ -8,11 +8,28 @@
 </div>
 
 <div class="home-navbar-container">
-  <ul class="home-navbar">
-    <li>Home</li>
-    <li>Login</li>
-    <li>Cart</li>
-  </ul>
+  <div class="home-navbar-login">
+    <% if user_signed_in? %>
+      <p>Logged in as:</p>
+      <p>
+        <%= link_to current_user.username, user_path(current_user) %>
+        (<%= link_to 'Logout', destroy_user_session_path, method: :delete %>)
+      </p>
+    <% else %>
+      <p>Login</p>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="home-navbar-shop">
+      <p><%= link_to 'My Shop', products_path %></p>
+    </div>
+    <div class="home-navbar-cart">
+      <p>My Cart</p>
+    </div>
+  <% end %>
+  <div class="home-navbar-home">
+    <p><%= link_to 'Home', root_path %></p>
+  </div>
 </div>
 
 <div class="home-banner">
@@ -47,6 +64,3 @@
 <p>
   <%= link_to 'Manage Users', users_path if current_user.admin %>
 </p>
-<%= link_to 'Go To My User Home Page', user_path(current_user) %><br>
-<%= link_to 'View My Cart' %><br>
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
