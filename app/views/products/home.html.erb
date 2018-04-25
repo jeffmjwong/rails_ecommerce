@@ -5,17 +5,30 @@
   <div class="home-header-title">
     <p>BUY AND SELL PRODUCTS ONLINE</p>
   </div>
-  <div class="home-header-action-container">
-    <div class="home-header-signup">
-      <p>Sign up</p>
+  <% if !user_signed_in? %>
+    <div class="home-header-action-container">
+      <a href="/users/sign_up" class="home-header-signup">
+        <p>Sign up</p>
+      </a>
+      <a href="/users/sign_in" class="home-header-login">
+        <p>Log in</p>
+      </a>
     </div>
-    <div class="home-header-login">
-      <p>Log in</p>
-    </div>
-  </div>
+  <% end %>
 </div>
 
 <div class="home-navbar-container">
+  <div class="home-navbar-home">
+    <p><%= link_to 'Home', root_path %></p>
+  </div>
+  <% if user_signed_in? %>
+    <div class="home-navbar-shop">
+      <p><%= link_to 'My Shop', products_path %></p>
+    </div>
+    <div class="home-navbar-cart">
+      <p>My Cart</p>
+    </div>
+  <% end %>
   <div class="home-navbar-login">
     <% if user_signed_in? %>
       <p>Logged in as:</p>
@@ -26,17 +39,6 @@
     <% else %>
       <p><%= link_to 'Login', new_user_session_path %></p>
     <% end %>
-  </div>
-  <% if user_signed_in? %>
-    <div class="home-navbar-shop">
-      <p><%= link_to 'My Shop', products_path %></p>
-    </div>
-    <div class="home-navbar-cart">
-      <p>My Cart</p>
-    </div>
-  <% end %>
-  <div class="home-navbar-home">
-    <p><%= link_to 'Home', root_path %></p>
   </div>
 </div>
 

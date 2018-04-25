@@ -38,7 +38,7 @@ div.home-header {
     grid-row: 4 / 7;
     p {
       overflow: hidden;
-      font-size: 3rem;
+      font-size: 2.7rem;
       font-weight: 700;
       line-height: 1.2em;
       color: white;
@@ -49,13 +49,40 @@ div.home-header {
     grid-column: 2 / 5;
     grid-row: 7 / 8;
     display: flex;
-    div {
-      flex-grow: 1;
+    a {
+      width: 50%;
       margin: 1em;
-      border: 0.1em solid black;
+      border-radius: 0.5em;
+      text-decoration: none;
       display: flex;
       justify-content: center;
       align-items: center;
+      p {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+    a.home-header-signup {
+      background-color:	hsla(229, 81%, 49%, 1);
+      border: 0.2em solid hsla(214, 69%, 23%, 1);
+      p {
+        color: white;
+      }
+    }
+    a.home-header-login {
+      background-color:	white;
+      border: 0.2em solid hsla(229, 81%, 49%, 1);
+      p {
+        color: hsla(229, 81%, 49%, 1);
+      }
+    }
+    a:hover {
+      cursor: pointer;
+      background-color: hsla(176, 68%, 46%, 1);
+      border: 0.2em solid hsla(214, 69%, 23%, 1);
+      p {
+        color: white;
+      }
     }
   }
 }
