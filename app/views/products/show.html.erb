@@ -37,9 +37,9 @@
 <p>
   <strong>Seller:</strong>
   <% if @product.user == current_user %>
-    <%= @product.user.username %> (You)
+    <%= link_to @product.user.username, user_path(@product.user) %><span> (You)</span>
   <% else %>
-    <%= @product.user.username %>
+    <%= link_to @product.user.username, user_path(@product.user) %>
   <% end %>
 </p>
 

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :check_sign_in, except: [:home, :show]
+  before_action :check_sign_in, except: [:home, :index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home
@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = current_user.products
+    @products = Product.all
   end
 
   def show
