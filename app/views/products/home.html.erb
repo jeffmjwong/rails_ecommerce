@@ -37,7 +37,10 @@
         (<%= link_to 'Logout', destroy_user_session_path, method: :delete %>)
       </p>
     <% else %>
-      <p><%= link_to 'Login', new_user_session_path %></p>
+      <p>
+        <span class="login"><%= link_to 'Login', new_user_session_path %></span>
+        to access personal shop and cart
+      </p>
     <% end %>
   </div>
 </div>
@@ -69,10 +72,13 @@
   </ul>
 </div>
 
-<br>
-
-<p>
-  <% if user_signed_in? %>
-    <%= link_to 'Manage Users', users_path if current_user.admin %>
+<div class="home-footer">
+  <% if user_signed_in? && current_user.admin %>
+    <div class="home-footer-admin">
+      <p><%= link_to 'Manage Users', users_path %></p>
+    </div>
   <% end %>
-</p>
+  <div class="home-footer-text">
+    <p>@ 2018 Powered By Heroku</p>
+  </div>
+</div>
