@@ -18,7 +18,7 @@
 
 <% if @user != current_user %>
   <div>
-    <p>Items sold by this user:</p>
+    <h3>Featured items:</h3>
     <table>
       <tr>
         <th>Name</th>
@@ -42,4 +42,5 @@
   <%= link_to 'Go To My Shop', products_path %> |
   <%= link_to 'Go To My Cart' %> |
 <% end %>
+<p><%= link_to "#{@user.username}'s Shop", user_products_path(@user) %></p>
 <%= link_to 'Go To Market Place Home Page', root_path %>

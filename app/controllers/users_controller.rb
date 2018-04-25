@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
-  before_action :check_sign_in, except: :show
-  before_action :check_admin, except: :show
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_sign_in, except: [:products, :show]
+  before_action :check_admin, except: [:products, :show]
+  before_action :set_user, only: [:products, :show, :edit, :update, :destroy]
+
+  def products
+    @products = @user.products
+  end
 
   def index
     @users = User.all

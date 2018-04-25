@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :create]
   resources :products
 
-  root to: "products#home"
+  get 'users/:id/products', to: 'users#products', as: 'user_products'
+  root 'products#home'
 end
