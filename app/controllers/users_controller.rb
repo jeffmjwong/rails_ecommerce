@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :check_sign_in, except: :show
-  before_action :check_admin, only: [:index, :edit]
+  before_action :check_admin, except: :show
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # before_action :check_current_user, only: [:show]
 
   def index
     @users = User.all
@@ -52,11 +51,5 @@ class UsersController < ApplicationController
 
     def check_admin
       redirect_to root_path if !current_user.admin
-    end
-
-    def check_current_user
-      if !current_user.admin
-        redirect_to user_path(current_user) if current_user != @user
-      end
     end
 end

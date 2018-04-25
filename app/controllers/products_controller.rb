@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :check_sign_in, except: [:home, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home
@@ -19,8 +20,6 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  # POST /products
-  # POST /products.json
   def create
     @product = Product.new(product_params)
     @product.user = current_user
@@ -36,8 +35,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -50,8 +47,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product.destroy
     respond_to do |format|
@@ -69,5 +64,9 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description, :quantity, :visibility, :unitprice, :photo)
+    end
+
+    def check_sign_in
+      redirect_to root_path if !user_signed_in?
     end
 end
