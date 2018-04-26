@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :carts
   devise_for :users
   resources :users, except: [:new, :create]
   resources :products

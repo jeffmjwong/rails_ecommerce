@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { maximum: 50 },
               uniqueness: { case_sensitive: false }
   has_many :products
+  has_one :cart
 end
