@@ -39,6 +39,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  # Added at 2018-04-26 12:28:26 +1000 by jeffwong:
+  gem "dotenv-rails", "~> 2.4"
 end
 
 group :development do

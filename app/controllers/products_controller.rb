@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :check_sign_in, except: [:home, :index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def home
     @products = Product.all
@@ -68,5 +69,9 @@ class ProductsController < ApplicationController
 
     def check_sign_in
       redirect_to root_path if !user_signed_in?
+    end
+
+    def check_current_user
+      redirect_to root_path if current_user != @product.user
     end
 end
