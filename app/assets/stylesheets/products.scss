@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$box-shadow-top-bottom: 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
+
 body.products-home {
   margin: 0 !important;
 }
@@ -86,8 +88,7 @@ div.home-header {
 div.home-navbar-container {
   height: 7em;
   background: linear-gradient(25deg, hsla(165, 60%, 53%, 1), hsla(185, 100%, 73%, 0.8), hsla(191, 65%, 57%, 1));
-  -webkit-box-shadow: 0 0.25em 0.6em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
-          box-shadow: 0 0.25em 0.6em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
+  box-shadow: $box-shadow-top-bottom;
   padding: 1.5em 2em;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -144,8 +145,7 @@ div.home-banner {
 
 div.home-main {
   // background: linear-gradient(135deg, hsla(311, 100%, 61%, 0.7), hsla(281, 64%, 38%, 0.7), hsla(251, 100%, 61%, 0.7));
-  -webkit-box-shadow: 0 0.25em 0.6em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
-          box-shadow: 0 0.25em 0.6em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
+  box-shadow: $box-shadow-top-bottom;
   padding: 2em 1em;
   margin-bottom: 5em;
   div.home-main-new-release {

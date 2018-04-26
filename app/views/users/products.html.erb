@@ -30,4 +30,8 @@
   </tbody>
 </table>
 
-<p><%= link_to 'Add Product', new_product_path %></p>
+<% if @user == current_user %>
+  <div>
+    <p><%= link_to 'Add Product', new_product_path %></p>
+  </div>
+<% end %>
