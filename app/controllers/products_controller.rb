@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def home
-    @products = Product.all
+    @products_new = Product.order(created_at: :desc)
   end
 
   def index
