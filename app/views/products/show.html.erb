@@ -61,7 +61,9 @@
 <p>
   <%= link_to 'Edit Product', edit_product_path(@product) if @product.user == current_user %>
 </p>
-<p>
-  <%= link_to 'Add To My Cart' if @product.user != current_user %>
-</p>
+<% if @product.user != current_user %>
+  <p>
+    <%= link_to 'Add To Cart', baskets_path(product_id: @product.id, cart_id: current_user.cart.id, quantity: 1), method: :post %>
+  </p>
+<% end %>
 <%= link_to 'Back To Market Place Home Page', root_path %>

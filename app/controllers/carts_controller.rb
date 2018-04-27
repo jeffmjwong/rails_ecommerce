@@ -7,6 +7,7 @@ class CartsController < ApplicationController
     elsif !current_user.admin && @cart.user != current_user
       redirect_to root_path
     end
+    @baskets = @cart.baskets
   end
 
 end
