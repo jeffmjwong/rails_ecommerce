@@ -26,7 +26,7 @@
       <p><%= link_to 'My Shop', user_products_path(current_user) %></p>
     </div>
     <div class="home-navbar-cart">
-      <p>My Cart</p>
+      <p><%= link_to 'My Cart', user_cart_path(current_user) %></p>
     </div>
   <% end %>
   <div class="home-navbar-login">

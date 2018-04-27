@@ -1,10 +1,10 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  # before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
+  before_action :check_current_user
+  before_action :set_cart
 
   def index
-    @user = User.find(params[:user_id])
-    check_current_user
-    @cart = @user.cart
   end
 
   def edit
@@ -22,18 +22,14 @@ class CartsController < ApplicationController
     end
   end
 
-  def destroy
-    @cart.destroy
-    respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_cart
-      @cart = Cart.find(params[:id])
+    # def set_cart
+    #   @cart = Cart.find(params[:id])
+    # end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -43,5 +39,9 @@ class CartsController < ApplicationController
 
     def check_current_user
       redirect_to root_path if current_user != @user
+    end
+
+    def set_cart
+      @cart = @user.cart
     end
 end
