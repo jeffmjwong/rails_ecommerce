@@ -1,6 +1,30 @@
 <h1><%= @cart.user.username %>'s Cart</h1>
 
-<% @baskets.each do |basket| %>
-  <p><%= basket.product.name %></p>
-  <p><%= basket.quantity %></p>
-<% end %>
+<table class="shopping-cart">
+  <tr>
+    <th colspan="2"></th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+
+  <% @baskets.each do |basket| %>
+    <tr>
+      <td class="product-image-container">
+        <%= link_to image_tag(basket.product.photo_url(:homepage)), product_path(basket.product) %>
+      </td>
+      <td class="product-name-container">
+        <p>
+          <%= link_to basket.product.name, product_path(basket.product) %>
+          by <%= link_to basket.product.user.username, user_path(basket.product.user) %>
+        </p>
+        <p>Quantity available: <%= basket.product.quantity %></p>
+      </td>
+      <td class="product-price-container">
+        <p>$<%= sprintf('%.2f', basket.product.unitprice) %></p>
+      </td>
+      <td class="product-quantity-container">
+        <p><%= basket.quantity %></p>
+      </td>
+    </tr>
+  <% end %>
+</table>

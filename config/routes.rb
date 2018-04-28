@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'baskets/create'
-
   devise_for :users
   resources :users, except: [:new, :create]
   resources :products

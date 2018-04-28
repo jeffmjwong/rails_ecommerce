@@ -1,3 +1,53 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.shopping-cart {
+  width: 80%;
+  & > tbody {
+    & > tr {
+      height: 15em;
+      &:first-child {
+        height: 3em;
+      }
+      & > th {
+        text-align: right;
+      }
+      & > td {
+      }
+      & > td.product-image-container {
+        width: 20%;
+        & > a {
+          & > img {
+            border-radius: 100em;
+          }
+        }
+      }
+      & > td.product-name-container {
+        width: 50%;
+        & > p {
+          & > a {
+            color: #1259f2;
+            text-decoration: none;
+            &:hover {
+              color: orange;
+            }
+          }
+        }
+      }
+      & > td.product-price-container {
+        width: 15%;
+        & > p {
+          color: #f53029;
+          text-align: right;
+        }
+      }
+      & > td.product-quantity-container {
+        width: 15%;
+        & > p {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
