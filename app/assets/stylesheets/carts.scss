@@ -30,7 +30,7 @@ table.shopping-cart {
     & > tr {
       height: 15em;
       &:first-child {
-        height: 3em;
+        height: 5em;
       }
       & > th {
         font-weight: normal;
@@ -38,7 +38,7 @@ table.shopping-cart {
       }
       & > td {
       }
-      & > td.product-image-container {
+      & > td.cart-image-container {
         width: 20%;
         & > a {
           & > img {
@@ -46,7 +46,7 @@ table.shopping-cart {
           }
         }
       }
-      & > td.product-name-container {
+      & > td.cart-name-container {
         width: 50%;
         & > p {
           & > a {
@@ -58,14 +58,14 @@ table.shopping-cart {
           }
         }
       }
-      & > td.product-price-container {
+      & > td.cart-price-container {
         width: 15%;
         & > p {
           color: #f53029;
           text-align: right;
         }
       }
-      & > td.product-quantity-container {
+      & > td.cart-quantity-container {
         width: 15%;
         & > p {
           text-align: right;
