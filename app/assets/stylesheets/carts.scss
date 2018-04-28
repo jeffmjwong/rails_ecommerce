@@ -55,6 +55,9 @@ table.shopping-cart {
               color: orange;
             }
           }
+          & > span {
+            color: red;
+          }
         }
       }
       & > td.cart-price-container {

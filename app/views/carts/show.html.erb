@@ -16,7 +16,7 @@
     <th>Quantity</th>
   </tr>
 
-  <% @cart.baskets.each do |basket| %>
+  <% @cart.baskets.order(:id).each do |basket| %>
     <tr>
       <td class="cart-image-container">
         <%= link_to image_tag(basket.product.photo_url(:homepage)), product_path(basket.product) %>
@@ -26,7 +26,13 @@
           <%= link_to basket.product.name, product_path(basket.product) %>
           by <%= link_to basket.product.user.username, user_path(basket.product.user) %>
         </p>
-        <p>Quantity available: <%= basket.product.quantity %></p>
+        <p>Quantity available:
+          <% if basket.product.quantity > 0 %>
+            <%= basket.product.quantity %>
+          <% else %>
+            <span>Out of stock</span>
+          <% end %>
+        </p>
         <p>
           Ratings: 3 / 5 |
           <%= link_to 'Remove item', baskets_path(basket_id: basket.id), method: :delete,
@@ -39,7 +45,7 @@
       <td class="cart-quantity-container">
         <%= form_with url: baskets_path(basket_id: basket.id), method: :patch do |form| %>
           <p>
-            <%= form.select :quantity, options_for_select((1..basket.product.quantity), basket.quantity),
+            <%= form.select :quantity, options_for_select((0..basket.product.quantity), basket.quantity),
                 {}, { onchange: 'this.form.submit();' } %>
           </p>
         <% end %>

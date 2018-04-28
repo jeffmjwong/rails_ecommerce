@@ -63,7 +63,7 @@
 </p>
 <% if @product.user != current_user %>
   <p>
-    <%= link_to 'Add To Cart', baskets_path(product_id: @product.id, cart_id: current_user.cart.id, quantity: 1), method: :post %>
+    <%= link_to 'Add To Cart', baskets_path(product_id: @product.id, cart_id: current_user.cart.id, quantity: 0), method: :post %>
   </p>
 <% end %>
 <%= link_to 'Back To Market Place Home Page', root_path %>
