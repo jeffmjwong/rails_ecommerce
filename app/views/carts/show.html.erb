@@ -1,4 +1,13 @@
-<h1><%= @cart.user.username %>'s Cart</h1>
+<div class="cart-header">
+  <h1>
+    <% if current_user.admin %>
+      <%= @cart.user.username %>'s Cart
+    <% else %>
+      Shopping Cart
+    <% end %>
+  </h1>
+</div>
+
 
 <table class="shopping-cart">
   <tr>

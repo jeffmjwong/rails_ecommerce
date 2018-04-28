@@ -2,8 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body.carts-show {
+  margin: 0;
+}
+
+div.cart-header {
+  height: 5em;
+  padding: 0 3em;
+  margin: 2em 0;
+  display: flex;
+  align-items: center;
+  & > h1 {
+    margin: 0;
+  }
+}
+
+table.shopping-cart, th, td {
+  border-top: 0.1em solid grey;
+  border-bottom: 0.1em solid grey;
+  border-collapse: collapse;
+}
+
 table.shopping-cart {
-  width: 80%;
+  width: 75%;
+  margin: 2em;
   & > tbody {
     & > tr {
       height: 15em;
@@ -11,6 +33,7 @@ table.shopping-cart {
         height: 3em;
       }
       & > th {
+        font-weight: normal;
         text-align: right;
       }
       & > td {
