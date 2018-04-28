@@ -4,6 +4,12 @@ class BasketsController < ApplicationController
     redirect_to cart_path(current_user)
   end
 
+  def update
+    @basket = Basket.find(params[:basket_id])
+    @basket.update(params.permit(:quantity))
+    redirect_to cart_path(current_user.cart)
+  end
+
   def destroy
     @basket = Basket.find(params[:basket_id])
     @basket.destroy

@@ -37,7 +37,12 @@
         <p>$<%= sprintf('%.2f', basket.product.unitprice) %></p>
       </td>
       <td class="cart-quantity-container">
-        <p><%= basket.quantity %></p>
+        <%= form_with url: baskets_path(basket_id: basket.id), method: :patch do |form| %>
+          <p>
+            <%= form.select :quantity, options_for_select((1..basket.product.quantity), basket.quantity),
+                {}, { onchange: 'this.form.submit();' } %>
+          </p>
+        <% end %>
       </td>
     </tr>
     <% @subtotal_items += basket.quantity %>
