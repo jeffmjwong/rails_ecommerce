@@ -16,7 +16,7 @@
     <th>Quantity</th>
   </tr>
 
-  <% @baskets.each do |basket| %>
+  <% @cart.baskets.each do |basket| %>
     <tr>
       <td class="cart-image-container">
         <%= link_to image_tag(basket.product.photo_url(:homepage)), product_path(basket.product) %>
@@ -40,5 +40,15 @@
         <p><%= basket.quantity %></p>
       </td>
     </tr>
+    <% @subtotal_items += basket.quantity %>
+    <% @subtotal_price += basket.quantity * basket.product.unitprice %>
   <% end %>
+
+  <tr>
+    <td colspan="4" class="cart-subtotal">
+      <p>
+        Subtotal (<%= @subtotal_items %> items): $<%= sprintf('%.2f', @subtotal_price) %>
+      </p>
+    </td>
+  </tr>
 </table>

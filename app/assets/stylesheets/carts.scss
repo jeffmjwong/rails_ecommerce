@@ -19,7 +19,6 @@ div.cart-header {
 
 table.shopping-cart, th, td {
   border-top: 0.1em solid grey;
-  border-bottom: 0.1em solid grey;
   border-collapse: collapse;
 }
 
@@ -29,7 +28,7 @@ table.shopping-cart {
   & > tbody {
     & > tr {
       height: 15em;
-      &:first-child {
+      &:first-child, &:last-child {
         height: 5em;
       }
       & > th {
@@ -68,6 +67,13 @@ table.shopping-cart {
       & > td.cart-quantity-container {
         width: 15%;
         & > p {
+          text-align: right;
+        }
+      }
+      & > td.cart-subtotal {
+        border-top: 0.1em solid grey;
+        & > p {
+          font-weight: bold;
           text-align: right;
         }
       }
