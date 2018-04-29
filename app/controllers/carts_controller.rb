@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(params[:id])
     check_user
-    check_quantity
+    @cart.check_product_quantity
     initialize_subtotal
   end
 
@@ -12,14 +12,6 @@ class CartsController < ApplicationController
     def check_user
       if !user_signed_in? || (!current_user.admin && @cart.user != current_user)
         redirect_to root_path
-      end
-    end
-
-    def check_quantity
-      @cart.baskets.each do |basket|
-        if basket.product.quantity < basket.quantity
-          basket.update(quantity: 0)
-        end
       end
     end
 
