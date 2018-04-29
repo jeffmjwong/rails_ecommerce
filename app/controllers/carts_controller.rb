@@ -17,7 +17,7 @@ class CartsController < ApplicationController
 
     def check_quantity
       @cart.baskets.each do |basket|
-        if basket.product.quantity < 1
+        if basket.product.quantity < basket.quantity
           basket.update(quantity: 0)
         end
       end

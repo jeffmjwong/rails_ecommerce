@@ -1,10 +1,6 @@
 <div class="cart-header">
   <h1>
-    <% if current_user.admin %>
-      <%= @cart.user.username %>'s Cart
-    <% else %>
-      Shopping Cart
-    <% end %>
+    <%= current_user.admin ? "#{@cart.user.username}'s Cart" : "Shopping Cart" %>
   </h1>
 </div>
 

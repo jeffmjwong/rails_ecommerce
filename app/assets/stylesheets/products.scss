@@ -4,10 +4,6 @@
 
 $box-shadow-top-bottom: 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.19);
 
-body.products-home {
-  margin: 0;
-}
-
 div.home-header {
   height: 100vh;
   background: url(image-path("home-background.jpg")) no-repeat center fixed;
@@ -185,41 +181,6 @@ div.home-main {
           text-align: center;
         }
       }
-    }
-  }
-}
-
-div.home-footer {
-  height: 6em;
-  background-color: hsla(60, 12%, 15%, 1);
-  padding: 0 1em;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  div {
-    display: flex;
-    align-items: center;
-    p {
-      margin: 0;
-    }
-  }
-  div.home-footer-admin {
-    grid-column: 1 / 3;
-    p {
-      a {
-        color: white;
-        text-decoration: none;
-      }
-      a:hover {
-        background-color: inherit;
-        color: hsla(243, 41%, 56%, 1);
-      }
-    }
-  }
-  div.home-footer-text {
-    grid-column: 8 / 11;
-    justify-content: flex-end;
-    p {
-      color: white;
     }
   }
 }

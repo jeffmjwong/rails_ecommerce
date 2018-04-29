@@ -70,14 +70,3 @@
     <% end %>
   </ul>
 </div>
-
-<div class="home-footer">
-  <% if user_signed_in? && current_user.admin %>
-    <div class="home-footer-admin">
-      <p><%= link_to 'Manage Users', users_path %></p>
-    </div>
-  <% end %>
-  <div class="home-footer-text">
-    <p>@ 2018 Powered By Heroku</p>
-  </div>
-</div>
