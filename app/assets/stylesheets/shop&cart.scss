@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.cart-header {
+div.sc-header {
   height: 5em;
   padding: 0 3em;
   margin: 2em 0;
@@ -13,27 +13,32 @@ div.cart-header {
   }
 }
 
-table.shopping-cart, table.shopping-cart th, table.shopping-cart td {
+table.sc-main-table, table.sc-main-table th, table.sc-main-table td {
   border-top: 0.1em solid grey;
   border-collapse: collapse;
 }
 
-table.shopping-cart {
+table.sc-main-table {
   width: 75%;
   margin: 2em;
-  & > tbody {
+  & > thead {
     & > tr {
-      height: 15em;
-      &:first-child, &:last-child {
-        height: 5em;
-      }
+      height: 5em;
       & > th {
         font-weight: normal;
         text-align: right;
+        &:first-child {
+          text-align: center;
+        }
       }
+    }
+  }
+  & > tbody {
+    & > tr {
+      height: 15em;
       & > td {
       }
-      & > td.cart-image-container {
+      & > td.sc-image-container {
         width: 20%;
         & > a {
           & > img {
@@ -41,7 +46,7 @@ table.shopping-cart {
           }
         }
       }
-      & > td.cart-name-container {
+      & > td.sc-name-container {
         width: 50%;
         & > p {
           & > a {
@@ -56,20 +61,20 @@ table.shopping-cart {
           }
         }
       }
-      & > td.cart-price-container {
+      & > td.sc-price-container {
         width: 15%;
         & > p {
           color: #f53029;
           text-align: right;
         }
       }
-      & > td.cart-quantity-container {
+      & > td.sc-quantity-container {
         width: 15%;
         p {
           text-align: right;
         }
       }
-      & > td.cart-subtotal {
+      & > td.sc-subtotal {
         border-top: 0.1em solid grey;
         & > p {
           font-weight: bold;
