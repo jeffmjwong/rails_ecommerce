@@ -20,6 +20,9 @@ table.sc-main-table, table.sc-main-table th, table.sc-main-table td {
 
 table.sc-main-table {
   width: 75%;
+  &.shop {
+    width: 90%;
+  }
   margin: 2em;
   & > thead {
     & > tr {
@@ -29,6 +32,9 @@ table.sc-main-table {
         text-align: right;
         &:first-child {
           text-align: center;
+          & > a{
+            text-decoration: none;
+          }
         }
       }
     }
@@ -36,8 +42,6 @@ table.sc-main-table {
   & > tbody {
     & > tr {
       height: 15em;
-      & > td {
-      }
       & > td.sc-image-container {
         width: 20%;
         & > a {
@@ -48,6 +52,9 @@ table.sc-main-table {
       }
       & > td.sc-name-container {
         width: 50%;
+        &.shop {
+          width: 40%;
+        }
         & > p {
           & > a {
             color: #1259f2;
@@ -63,6 +70,9 @@ table.sc-main-table {
       }
       & > td.sc-price-container {
         width: 15%;
+        &.shop {
+          width: 10%;
+        }
         & > p {
           color: #f53029;
           text-align: right;
@@ -70,6 +80,12 @@ table.sc-main-table {
       }
       & > td.sc-quantity-container {
         width: 15%;
+        p {
+          text-align: right;
+        }
+      }
+      & > td.sc-date-container.shop {
+        width: 30%;
         p {
           text-align: right;
         }

@@ -61,7 +61,7 @@
 <p>
   <%= link_to 'Edit Product', edit_product_path(@product) if @product.user == current_user %>
 </p>
-<% if @product.user != current_user %>
+<% if user_signed_in? && @product.user != current_user %>
   <p>
     <%= link_to 'Add To Cart', baskets_path(product_id: @product.id, cart_id: current_user.cart.id, quantity: 0), method: :post %>
   </p>

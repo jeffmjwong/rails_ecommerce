@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  before_action :check_sign_in, except: [:products, :show]
-  before_action :check_admin, except: [:products, :show]
-  before_action :set_user, only: [:products, :show, :edit, :update, :destroy]
+  before_action :check_admin, except: [:user_shop, :show]
+  before_action :set_user, only: [:user_shop, :show, :edit, :update, :destroy]
 
-  def products
-    @products = @user.products
+  def user_shop
+    @products = @user.products.order(created_at: :desc)
   end
 
   def index
@@ -48,11 +47,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:admin)
     end
 
-    def check_sign_in
-      redirect_to root_path if !user_signed_in?
-    end
-
     def check_admin
-      redirect_to root_path if !current_user.admin
+      unless user_signed_in? && current_user.admin
+        redirect_to root_path
+      end
     end
 end

@@ -4,7 +4,7 @@
   </div>
   <% if user_signed_in? %>
     <div class="home-navbar-shop">
-      <p><%= link_to 'My Shop', user_products_path(current_user) %></p>
+      <p><%= link_to 'My Shop', user_shop_path(current_user) %></p>
     </div>
     <div class="home-navbar-cart">
       <p><%= link_to 'My Cart', cart_path(current_user.cart) %></p>
@@ -36,20 +36,21 @@
   <thead>
     <tr>
       <th>
-        <%= link_to 'Add Item' %>
+        <%= link_to 'Add Item', new_product_path if @user == current_user %>
       </th>
       <th colspan="1"></th>
       <th>Price</th>
+      <th>Date Added</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @products.order(:id).each do |product| %>
+    <% @products.each do |product| %>
       <tr>
-        <td class="sc-image-container">
+        <td class="sc-image-container shop">
           <%= link_to image_tag(product.photo_url(:homepage)), product_path(product) %>
         </td>
-        <td class="sc-name-container">
+        <td class="sc-name-container shop">
           <p>
             <%= link_to product.name, product_path(product) %>
           </p>
@@ -62,12 +63,15 @@
           </p>
           <p>
             Ratings: 3 / 5 |
-            <%#= link_to 'Remove item', baskets_path(basket_id: basket.id), method: :delete,
-                  data: { confirm: 'This item will be removed from your cart. Are you sure?' } %>
+            <%= link_to 'Remove item', product_path(id: product.id), method: :delete,
+                  data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
           </p>
         </td>
-        <td class="sc-price-container">
+        <td class="sc-price-container shop">
           <p>$<%= sprintf('%.2f', product.unitprice) %></p>
+        </td>
+        <td class="sc-date-container shop">
+          <p><%= product.created_at %></p>
         </td>
       </tr>
     <% end %>

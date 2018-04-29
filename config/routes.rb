@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :products
   resources :carts, only: :show
 
-  get '/users/:id/products', to: 'users#products', as: 'user_products'
+  get '/users/:id/user_shop', to: 'users#user_shop', as: 'user_shop'
   post '/baskets', to: 'baskets#create'
   patch '/baskets', to: 'baskets#update'
   put '/baskets', to: 'baskets#update'
