@@ -175,10 +175,23 @@ div.home-main {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        p {
+        & > p {
           width: 100%;
-          margin: 0;
           text-align: center;
+          margin: 0;
+          &:first-child {
+            margin-top: 1em;
+            a {
+              color: #1259f2;
+              text-decoration: none;
+              &:hover {
+                color: orange;
+              }
+            }
+          }
+          &:last-child {
+            color: #f53029;
+          }
         }
       }
     }

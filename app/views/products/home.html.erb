@@ -62,7 +62,7 @@
             <%= link_to image_tag(product.photo_url(:homepage)), product_path(product) %>
           </div>
           <div class="product-info-container">
-            <p><%= product.name %></p>
+            <p>by <%= link_to product.user.username, user_path(product.user) %></p>
             <p>$<%= sprintf('%.2f', product.unitprice) %></p>
           </div>
         </li>
