@@ -4,10 +4,10 @@
   </div>
   <% if user_signed_in? %>
     <div class="home-navbar-shop">
-      <p><%= link_to 'My Shop', products_path %></p>
+      <p><%= link_to 'My Shop', user_shop_path(current_user) %></p>
     </div>
     <div class="home-navbar-cart">
-      <p>My Cart</p>
+      <p><%= link_to 'My Cart', cart_path(current_user.cart) %></p>
     </div>
   <% end %>
   <div class="home-navbar-login">
