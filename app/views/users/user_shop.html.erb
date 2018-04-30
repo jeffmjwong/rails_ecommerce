@@ -36,7 +36,7 @@
   <thead>
     <tr>
       <th>
-        <%= link_to 'Add Item', new_product_path if @user == current_user %>
+        <%= link_to 'Add Item', new_product_path, class: 'add-item' if @user == current_user %>
       </th>
       <th colspan="1"></th>
       <th>Price</th>

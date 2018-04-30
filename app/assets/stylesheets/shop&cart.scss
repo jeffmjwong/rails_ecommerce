@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$box-shadow-add-item: 1px 1px 3px 0 hsla(0, 0%, 0%, 0.2), 1px 1px 3px 0 hsla(0, 0%, 0%, 0.25);
+
 div.sc-header {
   height: 5em;
   padding: 0 3em;
@@ -20,10 +22,22 @@ table.sc-main-table, table.sc-main-table th, table.sc-main-table td {
 
 table.sc-main-table {
   width: 75%;
+  margin: 2em;
   &.shop {
     width: 90%;
+    & > thead > tr > th > a.add-item {
+      background: linear-gradient(135deg, #1534b0, #5177ff, #1534b0);
+      box-shadow: $box-shadow-add-item;
+      color: white;
+      font-weight: bold;
+      border-radius: 0.5em;
+      padding: 1em;
+      &:hover {
+        background: linear-gradient(135deg, #110b4d, #4e6bde, #110b4d);
+        box-shadow: none;
+      }
+    }
   }
-  margin: 2em;
   & > thead {
     & > tr {
       height: 5em;
