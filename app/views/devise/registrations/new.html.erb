@@ -26,6 +26,22 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :timezone %><br />
+    <%= f.select :timezone,
+          options_for_select([
+            ["Perth (UTC+0800)", "Perth"],
+            ["Darwin (UTC+0930)", "Darwin"],
+            ["Adelaide (UTC+0930)", "Adelaide"],
+            ["Brisbane (UTC+1000)", "Brisbane"],
+            ["Canberra (UTC+1000)", "Canberra"],
+            ["Sydney (UTC+1000)", "Sydney"],
+            ["Melbourne (UTC+1000)", "Melbourne"],
+            ["Hobart (UTC+1000)", "Hobart"],
+          ], "Canberra")
+    %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
