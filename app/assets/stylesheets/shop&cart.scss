@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$box-shadow-add-item: 1px 1px 3px 0 hsla(0, 0%, 0%, 0.2), 1px 1px 3px 0 hsla(0, 0%, 0%, 0.25);
-
 div.sc-header {
   height: 5em;
   padding: 0 3em;
@@ -71,14 +69,21 @@ table.sc-main-table {
         }
         & > p {
           & > a {
-            color: #1259f2;
+            color: $product-name-color;
             text-decoration: none;
             &:hover {
               color: orange;
             }
           }
           & > span {
-            color: red;
+            color: $price-color;
+          }
+          & > span.purple > a {
+            color: $user-name-color;
+            text-decoration: none;
+            &:hover {
+              color: orange;
+            }
           }
         }
       }
@@ -88,7 +93,7 @@ table.sc-main-table {
           width: 10%;
         }
         & > p {
-          color: #f53029;
+          color: $price-color;
           text-align: right;
         }
       }

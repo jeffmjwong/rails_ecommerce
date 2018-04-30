@@ -49,7 +49,10 @@
         <td class="sc-name-container">
           <p>
             <%= link_to basket.product.name, product_path(basket.product) %>
-            by <%= link_to basket.product.user.username, user_path(basket.product.user) %>
+            by
+            <span class="purple">
+              <%= link_to basket.product.user.username, user_path(basket.product.user) %>
+            </span>
           </p>
           <p>Quantity available:
             <% if basket.product.quantity > 0 %>

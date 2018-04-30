@@ -1,0 +1,47 @@
+div.product-main-container {
+  width: 100%;
+  margin: 5em 0 0;
+  display: flex;
+  & > div.product-container {
+    width: 80%;
+    & > div.product-info-container {
+      padding: 3em;
+      display: flex;
+      & > div.product-image-container {
+        width: 20%;
+        margin: 0 1em;
+        & > img {
+          border-radius: 100em;
+        }
+      }
+      & > div.product-details-container {
+        width: 80%;
+        & > div.product-name-container {
+          & > p {
+            color: $product-name-color;
+          }
+        }
+        & > div.product-misc-container {
+          & > p {
+            &.product-quantity > span, &:last-child > span.visible {
+              color: $quantity-color;
+            }
+            &.product-price > span, &:last-child > span.not-visible {
+              color: $price-color;
+            }
+            &:last-child > a {
+              color: $product-name-color;
+              text-decoration: none;
+              &:hover {
+                color: orange;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  & > div.product-one-click-payment-container {
+    width: 20%;
+  }
+}

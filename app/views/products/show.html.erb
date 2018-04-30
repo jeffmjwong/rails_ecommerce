@@ -4,10 +4,10 @@
   </div>
   <% if user_signed_in? %>
     <div class="home-navbar-shop">
-      <p><%= link_to 'My Shop', products_path %></p>
+      <p><%= link_to 'My Shop', user_shop_path(current_user) %></p>
     </div>
     <div class="home-navbar-cart">
-      <p>My Cart</p>
+      <p><%= link_to 'My Cart', cart_path(current_user.cart) %></p>
     </div>
   <% end %>
   <div class="home-navbar-login">
@@ -25,45 +25,60 @@
   </div>
 </div>
 
-<div>
-  <%= image_tag @product.photo_url(:medium) %>
+<div class="product-main-container">
+
+  <div class="product-container">
+    <div class="product-info-container">
+      <div class="product-image-container">
+        <%= image_tag (@product.photo_url(:homepage)) %>
+      </div>
+
+      <div class="product-details-container">
+        <div class="product-name-container">
+          <p><%= @product.name %></p>
+        </div>
+
+        <hr />
+
+        <div class="product-description-container">
+          <p><%= @product.description %></p>
+        </div>
+
+        <hr />
+
+        <div class="product-misc-container">
+          <p class="product-quantity">
+            Quantity Available: <span><%= @product.quantity %></span>
+          </p>
+          <p class="product-price">Price: <span>$<%= sprintf('%.2f', @product.unitprice) %></span></p>
+          <p>
+            <% if @product.user == current_user %>
+              <% if @product.visibility %>
+                <span class="visible">Visible to everyone | </span>
+              <% else %>
+                <span class="not-visible">Hidden from everyone | </span>
+              <% end %>
+            <% end %>
+            <% if @product.user == current_user %>
+              <%= link_to 'Edit item', edit_product_path(@product) %>
+              | <%= link_to 'Remove item', product_path(@product), method: :delete,
+                    data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
+            <% else %>
+              <%= link_to 'Add to cart', baskets_path(product_id: @product.id,
+                    cart_id: current_user.cart.id, quantity: 0), method: :post %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-review-container">
+
+    </div>
+  </div>
+
+  <div class="product-one-click-payment-container">
+    <div>asdf</div>
+  </div>
+
 </div>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Seller:</strong>
-  <% if @product.user == current_user %>
-    <%= link_to @product.user.username, user_path(@product.user) %><span> (You)</span>
-  <% else %>
-    <%= link_to @product.user.username, user_path(@product.user) %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Quantity Available:</strong>
-  <%= @product.quantity %>
-</p>
-
-<p>
-  <strong>Price per Unit:</strong>
-  $<%= @product.unitprice %>
-</p>
-
-<p>
-  <%= link_to 'Edit Product', edit_product_path(@product) if @product.user == current_user %>
-</p>
-<% if user_signed_in? && @product.user != current_user %>
-  <p>
-    <%= link_to 'Add To Cart', baskets_path(product_id: @product.id, cart_id: current_user.cart.id, quantity: 0), method: :post %>
-  </p>
-<% end %>
-<%= link_to 'Back To Market Place Home Page', root_path %>

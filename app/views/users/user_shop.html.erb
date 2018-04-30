@@ -65,7 +65,7 @@
             Ratings: 3 / 5
             <% if user_signed_in? %>
               <% if product.user == current_user %>
-                | <%= link_to 'Remove item', product_path(id: product.id), method: :delete,
+                | <%= link_to 'Remove item', product_path(product), method: :delete,
                       data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
               <% else %>
                 | <%= link_to 'Add to cart', baskets_path(product_id: product.id,
