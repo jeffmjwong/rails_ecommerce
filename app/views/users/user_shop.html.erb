@@ -62,16 +62,28 @@
             <% end %>
           </p>
           <p>
-            Ratings: 3 / 5 |
-            <%= link_to 'Remove item', product_path(id: product.id), method: :delete,
-                  data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
+            Ratings: 3 / 5
+            <% if user_signed_in? %>
+              <% if product.user == current_user %>
+                | <%= link_to 'Remove item', product_path(id: product.id), method: :delete,
+                      data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
+              <% else %>
+                | <%= link_to 'Add to cart', baskets_path(product_id: product.id,
+                      cart_id: current_user.cart.id, quantity: 0), method: :post %>
+              <% end %>
+            <% end %>
           </p>
         </td>
         <td class="sc-price-container shop">
           <p>$<%= sprintf('%.2f', product.unitprice) %></p>
         </td>
         <td class="sc-date-container shop">
-          <p><%= product.created_at %></p>
+          <p>
+            <%= product.created_at.in_time_zone("Brisbane").strftime("%I:%M%P %Z") %>
+          </p>
+          <p>
+            <%= product.created_at.in_time_zone("Brisbane").strftime("%d %b %Y") %>
+          </p>
         </td>
       </tr>
     <% end %>
