@@ -1,0 +1,161 @@
+div.product-main-container {
+  width: 100%;
+  margin: 3em 0;
+  display: flex;
+
+  & > div.product-container {
+    width: 80%;
+    & > div.product-info-container {
+      padding: 3em;
+      display: flex;
+      & > div.product-image-container {
+        width: 20%;
+        margin: 0 1em;
+        & > img {
+          border-radius: 100em;
+        }
+      }
+      & > div.product-details-container {
+        width: 80%;
+        & > div.product-name-container {
+          & > p {
+            & > span.product-name {
+              color: $product-name-color;
+            }
+            & > span.user-name > a {
+              color: $user-name-color;
+              text-decoration: none;
+              &:hover {
+                color: orange;
+              }
+            }
+          }
+        }
+        & > div.product-misc-container {
+          & > p {
+            &.product-quantity > span, &:last-child > span.visible {
+              color: $quantity-color;
+            }
+            &.product-price > span, &:last-child > span.not-visible {
+              color: $price-color;
+            }
+            &:last-child {
+              & > a {
+                color: $product-name-color;
+                text-decoration: none;
+                &:hover {
+                  color: orange;
+                }
+              }
+              & > span.remove-item > a {
+                color: $remove-item-color;
+                text-decoration: none;
+                &:hover {
+                  color: $remove-item-hover-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & > div.product-review-header {
+      margin: 2em 3em;
+      & > h1 {
+        font-weight: normal;
+        margin: 0;
+      }
+    }
+    & > div.product-review-container {
+      margin: 0 3em 3em 3em;
+      & > div.product-review {
+        width: 100%;
+        border-top: 0.8px solid grey;
+        padding: 1em 0;
+        display: flex;
+        & > div.product-review-user {
+          width: 20%;
+          margin: 0 1em;
+          & > p {
+            margin: 0.6em 0;
+            &.user-name {
+              & > a {
+                color: $user-name-color;
+                text-decoration: none;
+                &:hover {
+                  color: orange;
+                }
+              }
+            }
+            &:last-child {
+              & > span > a {
+                text-decoration: none;
+              }
+              & > span.edit-review > a {
+                color: $product-name-color;
+                &:hover {
+                  color: orange;
+                }
+              }
+              & > span.delete-review > a {
+                color: $remove-item-color;
+                &:hover {
+                  color: $remove-item-hover-color;
+                }
+              }
+            }
+          }
+        }
+        & > div.product-review-content {
+          width: 80%;
+          & > p.review-title {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    & > div.product-review-form-header {
+      margin-left: 3em;
+      & > h1 {
+        font-weight: normal;
+      }
+    }
+    & > form.product-review-form {
+      background-color: #eeeeee;
+      margin: 2em 3em;
+      padding: 1em;
+      & > div {
+        margin: 1em 0;
+        & > input#title, & > textarea#content {
+          width: 100%;
+          box-shadow: $box-shadow-add-item;
+          border: none;
+          border-radius: 0.2em;
+          font-size: 1rem;
+        }
+      }
+      & > div.review-form-title {
+        & > input {
+          height: 1.8em;
+          font-weight: bold;
+        }
+      }
+      & > div.review-form-content {
+        & > textarea {
+          height: 12em;
+          resize: none;
+        }
+      }
+    }
+    & > div.thank-you {
+      margin-left: 3em;
+       & > p {
+         margin: 0;
+       }
+    }
+  }
+
+  & > div.product-one-click-payment-container {
+    width: 20%;
+  }
+}

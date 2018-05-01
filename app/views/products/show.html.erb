@@ -25,45 +25,127 @@
   </div>
 </div>
 
-<div>
-  <%= image_tag @product.photo_url(:medium) %>
+<div class="product-main-container">
+
+  <div class="product-container">
+    <div class="product-info-container">
+      <div class="product-image-container">
+        <%= image_tag (@product.photo_url(:homepage)) %>
+      </div>
+
+      <div class="product-details-container">
+        <div class="product-name-container">
+          <p>
+            <span class="product-name"><%= @product.name %></span>
+            by <span class="user-name"><%= link_to @product.user.username, user_path(@product.user) %></span>
+          </p>
+        </div>
+
+        <hr />
+
+        <div class="product-description-container">
+          <p><%= @product.description %></p>
+        </div>
+
+        <hr />
+
+        <div class="product-misc-container">
+          <p class="product-quantity">
+            Quantity Available: <span><%= @product.quantity %></span>
+          </p>
+          <p class="product-price">Price: <span>$<%= sprintf('%.2f', @product.unitprice) %></span></p>
+          <p>
+            <% if @product.user == current_user %>
+              <% if @product.visibility %>
+                <span class="visible">Visible to everyone</span> |
+              <% else %>
+                <span class="not-visible">Hidden from everyone</span> |
+              <% end %>
+            <% end %>
+            <% if @product.user == current_user %>
+              <%= link_to 'Edit item', edit_product_path(@product) %> |
+              <span class="remove-item">
+                <%= link_to 'Remove item', product_path(@product), method: :delete,
+                      data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
+              </span>
+            <% else %>
+              <%= link_to 'Add to cart', baskets_path(product_id: @product.id,
+                    cart_id: current_user.cart.id, quantity: 0), method: :post %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="product-review-header">
+      <h1>Product reviews</p>
+    </div>
+
+    <div class="product-review-container">
+      <% @product.reviews.each do |review| %>
+        <div class="product-review">
+          <div class="product-review-user">
+            <p class="user-name"><%= link_to review.user.username, user_path(review.user) %></p>
+            <p><%= review.rating %> / 5</p>
+            <p><%= review.created_at.in_time_zone(review.user.timezone).strftime("%d %b %Y") %></p>
+            <% if review.user == current_user %>
+              <p>
+                <span class="edit-review"><%= link_to 'Edit' %></span> |
+                <span class="delete-review">
+                  <%= link_to 'Delete', review_path(review_id: review.id), method: :delete,
+                        data: { confirm: 'This review will be removed. Are you sure?' } %>
+                </span>
+              </p>
+            <% end %>
+          </div>
+
+          <div class="product-review-content">
+            <p class="review-title"><%= review.title %></p>
+            <p><%= review.content %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% unless Review.where(user: current_user, product: @product).present? %>
+      <div class="product-review-form-header">
+        <h1>Write a review</h1>
+      </div>
+
+      <%= form_with url: product_reviews_path(product_id: @product.id, user_id: current_user.id),
+            method: :post, class: "product-review-form" do |form| %>
+
+        <div class="review-form-rating">
+          <%= form.label :rating %>
+          <span>0</span><%= form.range_field :rating, in: 0..5, step: 1, id: :rating %><span>5</span>
+        </div>
+
+        <div class="review-form-title">
+          <%= form.label :title %>
+          <%= form.text_field :title, id: :title %>
+        </div>
+
+        <div class="review-form-content">
+          <%= form.label :content %>
+          <%= form.text_area :content, id: :content %>
+        </div>
+
+        <div class="review-submit">
+          <%= form.submit 'Submit review' %>
+        </div>
+
+      <% end %>
+    <% else %>
+      <div class="thank-you">
+        <p>Thank you for your review.</p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="product-one-click-payment-container">
+    <div>asdf</div>
+  </div>
+
 </div>
-
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Seller:</strong>
-  <% if @product.user == current_user %>
-    <%= link_to @product.user.username, user_path(@product.user) %><span> (You)</span>
-  <% else %>
-    <%= link_to @product.user.username, user_path(@product.user) %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Quantity Available:</strong>
-  <%= @product.quantity %>
-</p>
-
-<p>
-  <strong>Price per Unit:</strong>
-  $<%= @product.unitprice %>
-</p>
-
-<p>
-  <%= link_to 'Edit Product', edit_product_path(@product) if @product.user == current_user %>
-</p>
-<% if user_signed_in? && @product.user != current_user %>
-  <p>
-    <%= link_to 'Add To Cart', baskets_path(product_id: @product.id, cart_id: current_user.cart.id, quantity: 0), method: :post %>
-  </p>
-<% end %>
-<%= link_to 'Back To Market Place Home Page', root_path %>

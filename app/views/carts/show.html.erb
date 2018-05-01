@@ -49,7 +49,10 @@
         <td class="sc-name-container">
           <p>
             <%= link_to basket.product.name, product_path(basket.product) %>
-            by <%= link_to basket.product.user.username, user_path(basket.product.user) %>
+            by
+            <span class="user-name">
+              <%= link_to basket.product.user.username, user_path(basket.product.user) %>
+            </span>
           </p>
           <p>Quantity available:
             <% if basket.product.quantity > 0 %>
@@ -60,8 +63,10 @@
           </p>
           <p>
             Ratings: 3 / 5 |
-            <%= link_to 'Remove item', baskets_path(basket_id: basket.id), method: :delete,
-                  data: { confirm: 'This item will be removed from your cart. Are you sure?' } %>
+            <span class="remove-item">
+              <%= link_to 'Remove item', baskets_path(basket_id: basket.id), method: :delete,
+                    data: { confirm: 'This item will be removed from your cart. Are you sure?' } %>
+            </span>
           </p>
         </td>
         <td class="sc-price-container">

@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$box-shadow-top-bottom: 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 0.25em 0 hsla(0, 0%, 0%, 0.19);
-
 div.home-header {
   height: 100vh;
   background: url(image-path("home-background.jpg")) no-repeat center fixed;
@@ -182,7 +180,7 @@ div.home-main {
           &:first-child {
             margin-top: 1em;
             a {
-              color: #1259f2;
+              color: $user-name-color;
               text-decoration: none;
               &:hover {
                 color: orange;
@@ -190,7 +188,7 @@ div.home-main {
             }
           }
           &:last-child {
-            color: #f53029;
+            color: $price-color;
           }
         }
       }
