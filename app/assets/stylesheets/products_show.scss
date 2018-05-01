@@ -1,7 +1,8 @@
 div.product-main-container {
   width: 100%;
-  margin: 5em 0 0;
+  margin: 3em 0;
   display: flex;
+
   & > div.product-container {
     width: 80%;
     & > div.product-info-container {
@@ -18,7 +19,16 @@ div.product-main-container {
         width: 80%;
         & > div.product-name-container {
           & > p {
-            color: $product-name-color;
+            & > span.product-name {
+              color: $product-name-color;
+            }
+            & > span.user-name > a {
+              color: $user-name-color;
+              text-decoration: none;
+              &:hover {
+                color: orange;
+              }
+            }
           }
         }
         & > div.product-misc-container {
@@ -49,7 +59,74 @@ div.product-main-container {
         }
       }
     }
+    & > div.product-review-header {
+      margin: 2em 3em;
+      & > h1 {
+        font-weight: normal;
+        margin: 0;
+      }
+    }
+    & > div.product-review-container {
+      margin: 0 3em 3em 3em;
+      & > div.product-review {
+        width: 100%;
+        border-top: 0.8px solid grey;
+        padding: 1em 0;
+        display: flex;
+        & > div.product-review-user {
+          width: 20%;
+          margin: 0 1em;
+          & > p {
+            margin: 0.6em 0;
+            &.user-name {
+              & > a {
+                color: $user-name-color;
+                text-decoration: none;
+                &:hover {
+                  color: orange;
+                }
+              }
+            }
+            &:last-child {
+              & > span > a {
+                text-decoration: none;
+              }
+              & > span.edit-review > a {
+                color: $product-name-color;
+                &:hover {
+                  color: orange;
+                }
+              }
+              & > span.delete-review > a {
+                color: $remove-item-color;
+                &:hover {
+                  color: $remove-item-hover-color;
+                }
+              }
+            }
+          }
+        }
+        & > div.product-review-content {
+          width: 80%;
+          & > p.review-title {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    & > div.product-review-form-header {
+      & > h1 {
+        font-weight: normal;
+      }
+    }
+    & > div.thank-you {
+      margin-left: 3em;
+       & > p {
+         margin: 0;
+       }
+    }
   }
+
   & > div.product-one-click-payment-container {
     width: 20%;
   }

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   patch '/baskets', to: 'baskets#update'
   put '/baskets', to: 'baskets#update'
   delete '/baskets', to: 'baskets#destroy'
+  delete '/review', to: 'reviews#destroy'
 
   root 'products#home'
 end

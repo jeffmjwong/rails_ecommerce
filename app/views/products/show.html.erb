@@ -35,7 +35,10 @@
 
       <div class="product-details-container">
         <div class="product-name-container">
-          <p><%= @product.name %></p>
+          <p>
+            <span class="product-name"><%= @product.name %></span>
+            by <span class="user-name"><%= link_to @product.user.username, user_path(@product.user) %></span>
+          </p>
         </div>
 
         <hr />
@@ -76,23 +79,55 @@
 
     <hr />
 
+    <div class="product-review-header">
+      <h1>Product reviews</p>
+    </div>
+
     <div class="product-review-container">
       <% @product.reviews.each do |review| %>
-        <div class="product-review-user">
-          <p><%= review.user.username %></p>
-        </div>
+        <div class="product-review">
+          <div class="product-review-user">
+            <p class="user-name"><%= link_to review.user.username, user_path(review.user) %></p>
+            <p><%= review.rating %> / 5</p>
+            <p><%= review.created_at.in_time_zone(review.user.timezone).strftime("%d %b %Y") %></p>
+            <% if review.user == current_user %>
+              <p>
+                <span class="edit-review"><%= link_to 'Edit' %></span> |
+                <span class="delete-review">
+                  <%= link_to 'Delete', review_path(review_id: review.id), method: :delete,
+                        data: { confirm: 'This review will be removed. Are you sure?' } %>
+                </span>
+              </p>
+            <% end %>
+          </div>
 
-        <div class="product-review-content">
-          <p><%= review.content %></p>
+          <div class="product-review-content">
+            <p class="review-title"><%= review.title %></p>
+            <p><%= review.content %></p>
+          </div>
         </div>
       <% end %>
     </div>
 
     <% unless Review.where(user: current_user, product: @product).present? %>
-      <%= form_with url: product_reviews_path(product_id: @product.id, user_id: current_user.id),
-            method: :post do |form| %>
+      <div class="product-review-form-header">
+        <h1>Write a review</h1>
+      </div>
 
-        <div class="product-review-form">
+      <%= form_with url: product_reviews_path(product_id: @product.id, user_id: current_user.id),
+            method: :post, class: "product-review-form" do |form| %>
+
+        <div>
+          <%= form.label :rating %>
+          <%= form.range_field :rating %>
+        </div>
+
+        <div>
+          <%= form.label :title %>
+          <%= form.text_area :title %>
+        </div>
+
+        <div>
           <%= form.label :content %>
           <%= form.text_area :content %>
         </div>
@@ -103,7 +138,7 @@
 
       <% end %>
     <% else %>
-      <div>
+      <div class="thank-you">
         <p>Thank you for your review.</p>
       </div>
     <% end %>
