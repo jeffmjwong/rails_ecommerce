@@ -54,15 +54,17 @@
           <p>
             <% if @product.user == current_user %>
               <% if @product.visibility %>
-                <span class="visible">Visible to everyone | </span>
+                <span class="visible">Visible to everyone</span> |
               <% else %>
-                <span class="not-visible">Hidden from everyone | </span>
+                <span class="not-visible">Hidden from everyone</span> |
               <% end %>
             <% end %>
             <% if @product.user == current_user %>
-              <%= link_to 'Edit item', edit_product_path(@product) %>
-              | <%= link_to 'Remove item', product_path(@product), method: :delete,
-                    data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
+              <%= link_to 'Edit item', edit_product_path(@product) %> |
+              <span class="remove-item">
+                <%= link_to 'Remove item', product_path(@product), method: :delete,
+                      data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
+              </span>
             <% else %>
               <%= link_to 'Add to cart', baskets_path(product_id: @product.id,
                     cart_id: current_user.cart.id, quantity: 0), method: :post %>
@@ -72,8 +74,14 @@
       </div>
     </div>
 
-    <div class="product-review-container">
+    <hr />
 
+    <div class="product-review-container">
+      <div class="product-review-user">
+      </div>
+
+      <div class="product-review-content">
+      </div>
     </div>
   </div>
 

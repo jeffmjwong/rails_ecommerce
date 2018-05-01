@@ -78,11 +78,18 @@ table.sc-main-table {
           & > span {
             color: $price-color;
           }
-          & > span.purple > a {
+          & > span.user-name > a {
             color: $user-name-color;
             text-decoration: none;
             &:hover {
               color: orange;
+            }
+          }
+          & > span.remove-item > a {
+            color: $remove-item-color;
+            text-decoration: none;
+            &:hover {
+              color: $remove-item-hover-color;
             }
           }
         }

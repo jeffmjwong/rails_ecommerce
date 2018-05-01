@@ -29,11 +29,20 @@ div.product-main-container {
             &.product-price > span, &:last-child > span.not-visible {
               color: $price-color;
             }
-            &:last-child > a {
-              color: $product-name-color;
-              text-decoration: none;
-              &:hover {
-                color: orange;
+            &:last-child {
+              & > a {
+                color: $product-name-color;
+                text-decoration: none;
+                &:hover {
+                  color: orange;
+                }
+              }
+              & > span.remove-item > a {
+                color: $remove-item-color;
+                text-decoration: none;
+                &:hover {
+                  color: $remove-item-hover-color;
+                }
               }
             }
           }
