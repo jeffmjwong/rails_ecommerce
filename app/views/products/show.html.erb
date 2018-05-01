@@ -77,12 +77,36 @@
     <hr />
 
     <div class="product-review-container">
-      <div class="product-review-user">
-      </div>
+      <% @product.reviews.each do |review| %>
+        <div class="product-review-user">
+          <p><%= review.user.username %></p>
+        </div>
 
-      <div class="product-review-content">
-      </div>
+        <div class="product-review-content">
+          <p><%= review.content %></p>
+        </div>
+      <% end %>
     </div>
+
+    <% unless Review.where(user: current_user, product: @product).present? %>
+      <%= form_with url: product_reviews_path(product_id: @product.id, user_id: current_user.id),
+            method: :post do |form| %>
+
+        <div class="product-review-form">
+          <%= form.label :content %>
+          <%= form.text_area :content %>
+        </div>
+
+        <div class="review-submit">
+          <%= form.submit 'Submit review' %>
+        </div>
+
+      <% end %>
+    <% else %>
+      <div>
+        <p>Thank you for your review.</p>
+      </div>
+    <% end %>
   </div>
 
   <div class="product-one-click-payment-container">
