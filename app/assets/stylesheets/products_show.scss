@@ -115,8 +115,36 @@ div.product-main-container {
       }
     }
     & > div.product-review-form-header {
+      margin-left: 3em;
       & > h1 {
         font-weight: normal;
+      }
+    }
+    & > form.product-review-form {
+      background-color: #eeeeee;
+      margin: 2em 3em;
+      padding: 1em;
+      & > div {
+        margin: 1em 0;
+        & > input#title, & > textarea#content {
+          width: 100%;
+          box-shadow: $box-shadow-add-item;
+          border: none;
+          border-radius: 0.2em;
+          font-size: 1rem;
+        }
+      }
+      & > div.review-form-title {
+        & > input {
+          height: 1.8em;
+          font-weight: bold;
+        }
+      }
+      & > div.review-form-content {
+        & > textarea {
+          height: 12em;
+          resize: none;
+        }
       }
     }
     & > div.thank-you {
