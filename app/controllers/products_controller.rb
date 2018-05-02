@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
   def home
     current_user.create_cart if user_signed_in?
-    @products_new = Product.order(created_at: :desc)
+    @recent_products = Product.where(visibility: true).order(created_at: :desc)
   end
 
   def index

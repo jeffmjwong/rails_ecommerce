@@ -5,16 +5,7 @@
   <div class="home-header-title">
     <p>BUY AND SELL PRODUCTS ONLINE</p>
   </div>
-  <% if !user_signed_in? %>
-    <div class="home-header-action-container">
-      <a href="/users/sign_up" class="home-header-signup">
-        <p>Sign up</p>
-      </a>
-      <a href="/users/sign_in" class="home-header-login">
-        <p>Log in</p>
-      </a>
-    </div>
-  <% end %>
+  <%= display_signup_and_login %>
 </div>
 
 <%= render '/layouts/navbar' %>
@@ -30,18 +21,16 @@
     <p>Hot New Release</p>
   </div>
   <ul class="home-main-products-list">
-    <% @products_new.each do |product| %>
-      <% if product.visibility %>
-        <li>
-          <div class="product-image-container">
-            <%= link_to image_tag(product.photo_url(:homepage)), product_path(product) %>
-          </div>
-          <div class="product-info-container">
-            <p>by <%= link_to product.user.username, user_path(product.user) %></p>
-            <p>$<%= sprintf('%.2f', product.unitprice) %></p>
-          </div>
-        </li>
-      <% end %>
+    <% @recent_products.each do |product| %>
+      <li>
+        <div class="product-image-container">
+          <%= product_photo_link(product) %>
+        </div>
+        <div class="product-info-container">
+          <p>by <%= username_link(product.user) %></p>
+          <p>$<%= product_price(product) %></p>
+        </div>
+      </li>
     <% end %>
   </ul>
 </div>

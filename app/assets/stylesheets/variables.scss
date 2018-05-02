@@ -2,6 +2,11 @@ $navbar-color: linear-gradient(25deg, hsla(165, 60%, 53%, 1), hsla(185, 100%, 73
 $navbar-text-color: hsla(175, 69%, 16%, 1);
 $navbar-login-color: hsla(355, 69%, 26%, 1);
 
+$home-signup-background: hsla(229, 81%, 49%, 1);
+$home-signup-background-hover: hsla(197, 50%, 55%, 1);
+$home-signup-border: 0.2em solid hsla(214, 69%, 23%, 1);
+$home-login-border: 0.2em solid hsla(229, 81%, 49%, 1);
+
 $box-shadow-top-bottom: 0 0.25em 1.25em 0 hsla(0, 0%, 0%, 0.2), 0 0.25em 0.25em 0 hsla(0, 0%, 0%, 0.19);
 $box-shadow-add-item: 1px 1px 3px 0 hsla(0, 0%, 0%, 0.2), 1px 1px 3px 0 hsla(0, 0%, 0%, 0.25);
 $user-name-color: #943dff;
