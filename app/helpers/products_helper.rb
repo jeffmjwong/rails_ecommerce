@@ -11,4 +11,7 @@ module ProductsHelper
     end
   end
 
+  def display_own_product_visibility(product)
+  end
+
 end

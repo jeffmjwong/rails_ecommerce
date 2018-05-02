@@ -1,0 +1,26 @@
+<div class="navbar-container">
+  <div class="navbar-home">
+    <p><%= link_to 'Home', root_path %></p>
+  </div>
+  <% if user_signed_in? %>
+    <div class="navbar-shop">
+      <p><%= link_to 'My Shop', user_shop_path(current_user) %></p>
+    </div>
+    <div class="navbar-cart">
+      <p><%= link_to 'My Cart', cart_path(current_user.cart) %></p>
+    </div>
+  <% end %>
+  <div class="navbar-login">
+    <% if user_signed_in? %>
+      <p>
+        <%= link_to current_user.username, user_path(current_user) %>
+        (<%= link_to 'Logout', destroy_user_session_path, method: :delete %>)
+      </p>
+    <% else %>
+      <p>
+        <span class="login"><%= link_to 'Login', new_user_session_path %></span>
+        - access shop & cart
+      </p>
+    <% end %>
+  </div>
+</div>

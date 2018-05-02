@@ -79,48 +79,6 @@ div.home-header {
   }
 }
 
-div.home-navbar-container {
-  height: 7em;
-  background: linear-gradient(25deg, hsla(165, 60%, 53%, 1), hsla(185, 100%, 73%, 0.8), hsla(191, 65%, 57%, 1));
-  box-shadow: $box-shadow-top-bottom;
-  padding: 1.5em 2em;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  div {
-    display: flex;
-    align-items: center;
-    p {
-      color: hsla(175, 69%, 16%, 1);
-      font-size: 1.2rem;
-      line-height: 1.2em;
-      margin: 0;
-      a {
-        text-decoration: none;
-      }
-      a:visited {
-        color: inherit;
-      }
-      a:hover {
-        background-color: inherit;
-        color: white;
-      }
-    }
-  }
-  div.home-navbar-shop, div.home-navbar-cart {
-    justify-content: center;
-  }
-  div.home-navbar-login {
-    grid-column: 4 / 5;
-    justify-content: flex-end;
-    p {
-      text-align: right;
-      span.login {
-      color: hsla(355, 69%, 26%, 1);
-      }
-    }
-  }
-}
-
 div.home-banner {
   div.home-banner-description {
     padding: 3em 0;

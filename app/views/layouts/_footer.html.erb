@@ -1,0 +1,10 @@
+<div class="footer">
+  <% if user_signed_in? && current_user.admin %>
+    <div class="footer-admin">
+      <p><%= link_to 'Manage Users', users_path %></p>
+    </div>
+  <% end %>
+  <div class="footer-text">
+    <p>@ 2018 Powered By Heroku</p>
+  </div>
+</div>
