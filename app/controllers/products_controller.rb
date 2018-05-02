@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @avg_rating = @product.avg_rating
   end
 
   def new

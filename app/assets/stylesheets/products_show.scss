@@ -13,6 +13,14 @@ div.product-main-container {
         margin: 0 1em;
         & > img {
           border-radius: 100em;
+          margin-bottom: 1em;
+        }
+        & > div.product-average-rating-container {
+          width: 150px;
+          & > p {
+            text-align: center;
+            margin: 2px;
+          }
         }
       }
       & > div.product-details-container {
@@ -131,7 +139,7 @@ div.product-main-container {
           box-shadow: $box-shadow-add-item;
           border: none;
           border-radius: 0.2em;
-          font-size: 1rem;
+          font-size: 14px;
         }
       }
       & > div.review-form-title {
@@ -144,6 +152,17 @@ div.product-main-container {
         & > textarea {
           height: 12em;
           resize: none;
+        }
+      }
+      & > div.review-submit {
+        & > input {
+          @include button;
+          border: 0;
+          font-size: 14px;
+          padding: 0.8em;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }

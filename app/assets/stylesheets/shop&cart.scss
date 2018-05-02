@@ -24,16 +24,7 @@ table.sc-main-table {
   &.shop {
     width: 90%;
     & > thead > tr > th > a.add-item {
-      background: linear-gradient(135deg, #1534b0, #5177ff, #1534b0);
-      box-shadow: $box-shadow-add-item;
-      color: white;
-      font-weight: bold;
-      border-radius: 0.5em;
-      padding: 1em;
-      &:hover {
-        background: linear-gradient(135deg, #110b4d, #4e6bde, #110b4d);
-        box-shadow: none;
-      }
+      @include button;
     }
   }
   & > thead {

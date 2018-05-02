@@ -31,13 +31,14 @@
     <div class="product-info-container">
       <div class="product-image-container">
         <%= image_tag (@product.photo_url(:homepage)) %>
+        <%= display_avg_rating(@avg_rating) %>
       </div>
 
       <div class="product-details-container">
         <div class="product-name-container">
           <p>
             <span class="product-name"><%= @product.name %></span>
-            by <span class="user-name"><%= link_to @product.user.username, user_path(@product.user) %></span>
+            by <span class="user-name"><%= username_link(@product.user) %></span>
           </p>
         </div>
 
@@ -88,7 +89,7 @@
         <div class="product-review">
           <div class="product-review-user">
             <p class="user-name"><%= link_to review.user.username, user_path(review.user) %></p>
-            <p><%= review.rating %> / 5</p>
+            <p><%= review.rating %> out of 5</p>
             <p><%= review.created_at.in_time_zone(review.user.timezone).strftime("%d %b %Y") %></p>
             <% if review.user == current_user %>
               <p>
@@ -117,11 +118,6 @@
       <%= form_with url: product_reviews_path(product_id: @product.id, user_id: current_user.id),
             method: :post, class: "product-review-form" do |form| %>
 
-        <div class="review-form-rating">
-          <%= form.label :rating %>
-          <span>0</span><%= form.range_field :rating, in: 0..5, step: 1, id: :rating %><span>5</span>
-        </div>
-
         <div class="review-form-title">
           <%= form.label :title %>
           <%= form.text_field :title, id: :title %>
@@ -130,6 +126,11 @@
         <div class="review-form-content">
           <%= form.label :content %>
           <%= form.text_area :content, id: :content %>
+        </div>
+
+        <div class="review-form-rating">
+          <%= form.label :rating, 'Product rating' %>
+          <span>0</span><%= form.range_field :rating, in: 0..5, step: 1, id: :rating %><span>5</span>
         </div>
 
         <div class="review-submit">
