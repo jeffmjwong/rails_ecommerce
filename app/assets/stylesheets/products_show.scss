@@ -15,6 +15,9 @@ div.product-main-container {
           border-radius: 100em;
           margin-bottom: 1em;
         }
+        &:hover {
+          opacity: 1;
+        }
         & > div.product-average-rating-container {
           width: 150px;
           & > p {
@@ -30,23 +33,10 @@ div.product-main-container {
             & > span.product-name {
               color: $product-name-color;
             }
-            & > span.user-name > a {
-              color: $user-name-color;
-              text-decoration: none;
-              &:hover {
-                color: orange;
-              }
-            }
           }
         }
         & > div.product-misc-container {
           & > p {
-            &.product-quantity > span {
-              color: $quantity-color;
-            }
-            &.product-price > span {
-              color: $price-color;
-            }
             &:last-child {
               & > span.edit-item > a, & > span.add-to-cart > a {
                 color: $product-name-color;

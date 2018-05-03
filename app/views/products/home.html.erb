@@ -23,12 +23,10 @@
   <ul class="home-main-products-list">
     <% @recent_products.each do |product| %>
       <li>
-        <div class="product-image-container">
-          <%= product_photo_link(product) %>
-        </div>
+        <%= product_image_link(product) %>
         <div class="product-info-container">
           <p>by <%= username_link(product.user) %></p>
-          <p>$<%= product_price(product) %></p>
+          <p><%= product_price(product) %></p>
         </div>
       </li>
     <% end %>

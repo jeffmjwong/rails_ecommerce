@@ -1,0 +1,30 @@
+div.product-image-container {
+  & > a {
+    & > img {
+      border-radius: 100em;
+      margin-bottom: 1em;
+    }
+    &:hover {
+      background-color: inherit;
+    }
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+span.user-name > a {
+  color: $user-name-color;
+  text-decoration: none;
+  &:hover {
+    color: orange;
+  }
+}
+
+span.product-quantity {
+  color: $quantity-color;
+}
+
+span.product-price, span.product-oos {
+  color: $price-color;
+}

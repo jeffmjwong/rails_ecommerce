@@ -3,7 +3,7 @@
   <div class="product-container">
     <div class="product-info-container">
       <div class="product-image-container">
-        <%= image_tag (@product.photo_url(:homepage)) %>
+        <%= image_tag @product.photo_url(:homepage) %>
         <%= display_avg_rating(@avg_rating) %>
       </div>
 
@@ -11,7 +11,7 @@
         <div class="product-name-container">
           <p>
             <span class="product-name"><%= @product.name %></span>
-            by <span class="user-name"><%= username_link(@product.user) %></span>
+            by <%= username_link(@product.user) %>
           </p>
         </div>
 
@@ -24,10 +24,10 @@
         <hr />
 
         <div class="product-misc-container">
-          <p class="product-quantity">
-            Quantity Available: <span><%= @product.quantity %></span>
+          <p>
+            Quantity Available: <%= product_quantity(@product) %>
           </p>
-          <p class="product-price">Price: <span>$<%= product_price(@product) %></span></p>
+          <p class="product-price">Price: <%= product_price(@product) %></p>
           <p>
             <% if user_signed_in? %>
               <% if @product.user == current_user %>

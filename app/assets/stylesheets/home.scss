@@ -92,15 +92,6 @@ div.home-main {
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      div.product-image-container a img {
-        border-radius: 100em;
-      }
-      div.product-image-container:hover {
-        opacity: 0.7;
-        a:hover {
-          background-color: inherit;
-        }
-      }
       div.product-info-container {
         width: 100%;
         display: flex;
@@ -110,19 +101,6 @@ div.home-main {
           width: 100%;
           text-align: center;
           margin: 0;
-          &:first-child {
-            margin-top: 1em;
-            a {
-              color: $user-name-color;
-              text-decoration: none;
-              &:hover {
-                color: orange;
-              }
-            }
-          }
-          &:last-child {
-            color: $price-color;
-          }
         }
       }
     }
