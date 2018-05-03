@@ -22,6 +22,13 @@ div.login-page {
     }
     & > div.login-header-website {
       & > p {
+        & > a {
+          color: $login-header-color;
+          text-decoration: none;
+          &:hover {
+            color: white;
+          }
+        }
         & > span.white {
           color: white;
         }
@@ -30,15 +37,22 @@ div.login-page {
     & > div.login-header-signup {
       & > p {
         text-align: right;
+        & > span.signup > a {
+          color: $login-header-signup-color;
+          text-decoration: none;
+          &:hover {
+            color: white;
+          }
+        }
       }
     }
   }
 
   & > div.login-main {
+    margin-top: 5em;
     display: flex;
     justify-content: center;
     & > div.login-form-container {
-      margin-top: 3em;
 
       & > div.login-logo-container {
         text-align: center;
