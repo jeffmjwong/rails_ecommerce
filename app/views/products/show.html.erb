@@ -29,22 +29,26 @@
           </p>
           <p class="product-price">Price: <span>$<%= product_price(@product) %></span></p>
           <p>
-            <% if @product.user == current_user %>
-              <% if @product.visibility %>
-                <span class="visible">Visible to everyone</span> |
+            <% if user_signed_in? %>
+              <% if @product.user == current_user %>
+                <% if @product.visibility %>
+                  <span class="visible">Visible to everyone</span> |
+                <% else %>
+                  <span class="not-visible">Hidden from everyone</span> |
+                <% end %>
+                <span class="edit-item">
+                  <%= link_to 'Edit item', edit_product_path(@product) %> |
+                </span>
+                <span class="remove-item">
+                  <%= link_to 'Remove item', product_path(@product), method: :delete,
+                        data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
+                </span>
               <% else %>
-                <span class="not-visible">Hidden from everyone</span> |
+                <span class="add-to-cart">
+                  <%= link_to 'Add to cart', baskets_path(product_id: @product.id,
+                        cart_id: current_user.cart.id, quantity: 0), method: :post %>
+                </span>
               <% end %>
-            <% end %>
-            <% if @product.user == current_user %>
-              <%= link_to 'Edit item', edit_product_path(@product) %> |
-              <span class="remove-item">
-                <%= link_to 'Remove item', product_path(@product), method: :delete,
-                      data: { confirm: 'This item will be removed from your shop. Are you sure?' } %>
-              </span>
-            <% else %>
-              <%= link_to 'Add to cart', baskets_path(product_id: @product.id,
-                    cart_id: current_user.cart.id, quantity: 0), method: :post %>
             <% end %>
           </p>
         </div>
@@ -83,38 +87,41 @@
       <% end %>
     </div>
 
-    <% if @product.user != current_user %>
-      <% if !Review.where(user: current_user, product: @product).present? %>
-        <div class="product-review-form-header">
-          <h1>Write a review</h1>
-        </div>
-
-        <%= form_with url: product_reviews_path(product_id: @product.id, user_id: current_user.id),
-              method: :post, class: "product-review-form" do |form| %>
-
-          <div class="review-form-title">
-            <%= form.label :title %>
-            <%= form.text_field :title, id: :title %>
+    <% if user_signed_in? %>
+      <% if @product.user != current_user %>
+        <% if !Review.where(user: current_user, product: @product).present? %>
+          <div class="product-review-form-header">
+            <h1>Write a review</h1>
           </div>
 
-          <div class="review-form-content">
-            <%= form.label :content %>
-            <%= form.text_area :content, id: :content %>
-          </div>
+          <%= form_with url: product_reviews_path(product_id: @product.id, user_id: current_user.id),
+                method: :post, class: "product-review-form" do |form| %>
 
-          <div class="review-form-rating">
-            <%= form.label :rating, 'Product rating' %>
-            <span>0</span><%= form.range_field :rating, in: 0..5, step: 1, id: :rating %><span>5</span>
-          </div>
+            <div class="review-form-title">
+              <%= form.label :title %>
+              <%= form.text_field :title, id: :title %>
+            </div>
 
-          <div class="review-submit">
-            <%= form.submit 'Submit review' %>
-          </div>
+            <div class="review-form-content">
+              <%= form.label :content %>
+              <%= form.text_area :content, id: :content %>
+            </div>
 
+            <div class="review-form-rating">
+              <%= form.label :rating, 'Product rating' %>
+              <span>0</span><%= form.range_field :rating, in: 0..5, step: 1, id: :rating %><span>5</span>
+            </div>
+
+            <div class="review-submit">
+              <%= form.submit 'Submit review' %>
+            </div>
+
+          <% end %>
+        <% else %>
+          <div class="thank-you">
+            <p>Thank you for your review.</p>
+          </div>
         <% end %>
-        <div class="thank-you">
-          <p>Thank you for your review.</p>
-        </div>
       <% end %>
     <% end %>
   </div>

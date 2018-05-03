@@ -48,7 +48,7 @@ div.product-main-container {
               color: $price-color;
             }
             &:last-child {
-              & > a {
+              & > span.edit-item > a, & > span.add-to-cart > a {
                 color: $product-name-color;
                 text-decoration: none;
                 &:hover {

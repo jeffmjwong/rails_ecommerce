@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def home
-    current_user.create_cart if user_signed_in?
+    current_user.create_cart_after_user_sign_up if user_signed_in?
     @recent_products = Product.where(visibility: true).order(created_at: :desc)
   end
 
