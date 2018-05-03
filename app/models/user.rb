@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :products, dependent: :delete_all
   has_one :cart, dependent: :delete
 
-  def create_cart
+  def create_cart_after_user_sign_up
     Cart.create(user: self) if !self.cart.present?
   end
 

@@ -1,0 +1,28 @@
+@mixin home_header_buttons($background-color, $color, $border) {
+  width: 50%;
+  background-color: $background-color;
+  color: $color;
+  border: $border;
+  border-radius: 0.5em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 1em 0;
+  margin: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button() {
+  background: linear-gradient(135deg, #1534b0, #5177ff, #1534b0);
+  box-shadow: $box-shadow-add-item;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5em;
+  padding: 1em;
+  &:hover {
+    background: linear-gradient(135deg, #110b4d, #4e6bde, #110b4d);
+    box-shadow: none;
+  }
+}

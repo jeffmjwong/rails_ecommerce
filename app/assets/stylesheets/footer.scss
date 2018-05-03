@@ -1,0 +1,36 @@
+div.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 6em;
+  background-color: $footer-background-color;
+  padding: 0 1em;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  & > div {
+  display: flex;
+  align-items: center;
+    & > p {
+     margin: 0;
+    }
+  }
+  & > div.footer-admin {
+  grid-column: 1 / 3;
+  & > p > a {
+    color: white;
+    text-decoration: none;
+      &:hover {
+        background-color: inherit;
+        color: $footer-admin-option-hover-color;
+      }
+    }
+  }
+  div.footer-text {
+  grid-column: 8 / 11;
+  justify-content: flex-end;
+    & > p {
+     color: white;
+    }
+  }
+}

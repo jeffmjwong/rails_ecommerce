@@ -1,0 +1,108 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.home-header {
+  height: 100vh;
+  background: url(image-path("home-background.jpg")) no-repeat center fixed;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  div.home-header-website, div.home-header-title {
+    grid-column: 2 / 5;
+    display: flex;
+    justify-content: center;
+  }
+  div.home-header-website {
+    grid-row: 1 / 2;
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+      margin-top: 2em;
+      span.black {
+        color: black;
+      }
+    }
+  }
+  div.home-header-title {
+    grid-row: 5 / 8;
+    p {
+      overflow: hidden;
+      font-size: 2.7rem;
+      font-weight: 700;
+      line-height: 1.2em;
+      color: white;
+      margin: 0;
+    }
+  }
+  & > div.home-header-action-container {
+    grid-column: 2 / 5;
+    grid-row: 8 / 9;
+    display: flex;
+    & > a.home-header-signup {
+      @include home-header-buttons($home-signup-background, white, $home-signup-border);
+    }
+    & > a.home-header-login {
+      @include home-header-buttons(white, $home-signup-background, $home-login-border);
+    }
+    & > a:hover {
+      @include home-header-buttons($home-signup-background-hover, white, $home-signup-border);
+      cursor: pointer;
+    }
+  }
+}
+
+div.home-banner {
+  & > div.home-banner-description {
+    padding: 3em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    & > p {
+      width: 100%;
+      font-size: 2rem;
+      text-align: center;
+      margin: 0.5em 0 0.2em 0;
+    }
+  }
+}
+
+div.home-main {
+  // background: linear-gradient(135deg, hsla(311, 100%, 61%, 0.7), hsla(281, 64%, 38%, 0.7), hsla(251, 100%, 61%, 0.7));
+  box-shadow: $box-shadow-top-bottom;
+  padding: 2em 1em;
+  margin-bottom: 5em;
+  div.home-main-new-release {
+    padding-left: 1.5em;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  ul.home-main-products-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    li {
+      padding: 0.8em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      div.product-info-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        & > p {
+          width: 100%;
+          text-align: center;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
