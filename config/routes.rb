@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'reviews/create'
-
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   resources :users, except: [:new, :create]
   resources :products do
     post '/reviews', to: 'reviews#create'

@@ -1,0 +1,87 @@
+body.users-sessions-new, body.users-sessions-create {
+  padding: 0;
+}
+
+div.login-page {
+  min-height: 100vh;
+  background: url(image-path("login-min.jpg")) no-repeat center fixed;
+  background-size: cover;
+  opacity: 0;
+  animation: fade-in 1.5s forwards;
+
+  & > div.login-header {
+    height: 3em;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    & > div > p {
+      margin: 0;
+      color: $login-header-color;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    & > div.login-header-website {
+      & > p {
+        & > span.white {
+          color: white;
+        }
+      }
+    }
+    & > div.login-header-signup {
+      & > p {
+        text-align: right;
+      }
+    }
+  }
+
+  & > div.login-main {
+    display: flex;
+    justify-content: center;
+    & > div.login-form-container {
+      margin-top: 3em;
+
+      & > div.login-logo-container {
+        text-align: center;
+        & > img {
+          height: 140px;
+          width: 140px;
+        }
+      }
+      & > form.new_user {
+        & > div.login-form-field {
+          margin-bottom: 2em;
+          & > label {
+            font-size: 1rem;
+            margin-bottom: 0.5em;
+            padding-left: 0.5em;
+          }
+          & > input {
+            @include login_input_field($login-input-background-color);
+            padding-left: 0.8em;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        & > div.login-form-submit {
+          & > input {
+            @include login_input_field($login-submit-background-color);
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
+            &:hover {
+              cursor: pointer;
+              background-color: white;
+              color: $login-submit-background-color;
+              border: 2px solid $login-submit-background-color;
+            }
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

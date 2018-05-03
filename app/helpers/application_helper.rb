@@ -1,10 +1,17 @@
 module ApplicationHelper
 
   def render_navbar
-    unless ((params[:controller] == 'devise-registrations' && params[:action] == 'new') ||
-            (params[:controller] == 'devise-sessions' && params[:action] == 'new') ||
-            (params[:controller] == 'products' && params[:action] == 'home'))
+    unless params[:controller] == 'devise/registrations' && params[:action] == 'new' ||
+            params[:controller] == 'users/sessions' ||
+            params[:controller] == 'products' && params[:action] == 'home'
       render 'layouts/navbar'
+    end
+  end
+
+  def render_footer
+    unless params[:controller] == 'devise/registrations' && params[:action] == 'new' ||
+            params[:controller] == 'users/sessions'
+      render 'layouts/footer'
     end
   end
 

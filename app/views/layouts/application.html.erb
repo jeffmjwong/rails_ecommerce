@@ -11,6 +11,6 @@
   <body class="<%= (params[:controller] + '-' + params[:action]).tr('/', '-') %>">
     <%= render_navbar %>
     <%= yield %>
-    <%= render 'layouts/footer' %>
+    <%= render_footer %>
   </body>
 </html>
