@@ -41,10 +41,10 @@ div.product-main-container {
         }
         & > div.product-misc-container {
           & > p {
-            &.product-quantity > span, &:last-child > span.visible {
+            &.product-quantity > span {
               color: $quantity-color;
             }
-            &.product-price > span, &:last-child > span.not-visible {
+            &.product-price > span {
               color: $price-color;
             }
             &:last-child {

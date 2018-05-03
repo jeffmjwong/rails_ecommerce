@@ -31,11 +31,6 @@
           <p>
             <% if user_signed_in? %>
               <% if @product.user == current_user %>
-                <% if @product.visibility %>
-                  <span class="visible">Visible to everyone</span> |
-                <% else %>
-                  <span class="not-visible">Hidden from everyone</span> |
-                <% end %>
                 <span class="edit-item">
                   <%= link_to 'Edit item', edit_product_path(@product) %> |
                 </span>

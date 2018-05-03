@@ -8,6 +8,10 @@ module ApplicationHelper
     link_to image_tag(product.photo_url(:homepage)), product_path(product)
   end
 
+  def product_quantity(product)
+
+  end
+
   def product_price(product)
     sprintf('%.2f', product.unitprice)
   end
