@@ -57,7 +57,7 @@
     </div>
 
     <div class="product-review-container">
-      <% @product.reviews.each do |review| %>
+      <% @recent_reviews.each do |review| %>
         <div class="product-review">
           <div class="product-review-user">
             <p class="user-name"><%= link_to review.user.username, user_path(review.user) %></p>
@@ -65,7 +65,6 @@
             <p><%= review.created_at.in_time_zone(review.user.timezone).strftime("%d %b %Y") %></p>
             <% if review.user == current_user %>
               <p>
-                <span class="edit-review"><%= link_to 'Edit' %></span> |
                 <span class="delete-review">
                   <%= link_to 'Delete', review_path(review_id: review.id), method: :delete,
                         data: { confirm: 'This review will be removed. Are you sure?' } %>

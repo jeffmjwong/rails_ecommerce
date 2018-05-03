@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def render_navbar
+    unless ((params[:controller] == 'devise-registrations' && params[:action] == 'new') ||
+            (params[:controller] == 'devise-sessions' && params[:action] == 'new') ||
+            (params[:controller] == 'products' && params[:action] == 'home'))
+      render 'layouts/navbar'
+    end
+  end
+
   def username_link(user)
     content_tag(:span, (link_to user.username, user_path(user)), class: "user-name")
   end

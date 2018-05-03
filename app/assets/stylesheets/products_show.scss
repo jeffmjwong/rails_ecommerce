@@ -89,12 +89,6 @@ div.product-main-container {
               & > span > a {
                 text-decoration: none;
               }
-              & > span.edit-review > a {
-                color: $product-name-color;
-                &:hover {
-                  color: orange;
-                }
-              }
               & > span.delete-review > a {
                 color: $remove-item-color;
                 &:hover {

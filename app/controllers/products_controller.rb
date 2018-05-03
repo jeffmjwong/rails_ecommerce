@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 
   def show
     @avg_rating = @product.avg_rating
+    @recent_reviews = @product.reviews.order(created_at: :desc)
   end
 
   def new

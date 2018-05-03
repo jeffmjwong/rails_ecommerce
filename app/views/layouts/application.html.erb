@@ -9,7 +9,7 @@
   </head>
 
   <body class="<%= (params[:controller] + '-' + params[:action]).tr('/', '-') %>">
-    <%= render 'layouts/navbar' unless (params[:controller] == 'products' && params[:action] == 'home') %>
+    <%= render_navbar %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
