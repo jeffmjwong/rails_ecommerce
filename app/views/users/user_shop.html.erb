@@ -27,15 +27,9 @@
           <p>
             <%= link_to product.name, product_path(product) %>
           </p>
-          <p>Quantity available:
-            <% if product.quantity > 0 %>
-              <%= product.quantity %>
-            <% else %>
-              <span>Out of stock</span>
-            <% end %>
-          </p>
+          <p>Quantity available: <%= product_quantity(product) %></p>
           <p>
-            Ratings: 3 / 5 |
+            <%= display_avg_rating(product.avg_rating) %> |
             <% if user_signed_in? %>
               <% if product.user == current_user %>
                 <span class="remove-item">

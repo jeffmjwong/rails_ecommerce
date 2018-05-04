@@ -6,14 +6,14 @@ module ProductsHelper
     else
       content_tag(:div, class: "product-average-rating-container") do
         concat content_tag(:p, "Average rating")
-        concat content_tag(:p, "#{sprintf('%.1f', @avg_rating)} out of 5")
+        concat content_tag(:p, "#{sprintf('%.1f', avg_rating)} out of 5")
       end
     end
   end
 
   def display_for_own_product(product)
     if product.user == current_user
-      
+
     end
   end
 

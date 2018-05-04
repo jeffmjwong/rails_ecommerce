@@ -50,6 +50,9 @@ table.sc-main-table {
         & > a {
           & > img {
             border-radius: 100em;
+            &:hover {
+              opacity: 0.7;
+            }
           }
         }
       }
@@ -65,9 +68,6 @@ table.sc-main-table {
             &:hover {
               color: orange;
             }
-          }
-          & > span {
-            color: $price-color;
           }
           & > span.user-name > a {
             color: $user-name-color;
