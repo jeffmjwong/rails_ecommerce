@@ -37,4 +37,15 @@ module ApplicationHelper
     content_tag(:span, "$#{sprintf('%.2f', product.unitprice)}", class: "product-price")
   end
 
+  def product_rating(product)
+    if product.avg_rating.nan?
+      content_tag(:span, "No ratings available")
+    else
+      content_tag :span do
+        concat sprintf('%.1f', product.avg_rating)
+        concat " out of 5"
+      end
+    end
+  end
+
 end
