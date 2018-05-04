@@ -1,29 +1,29 @@
-body.users-sessions-new, body.users-sessions-create {
+body.users-sessions-new, body.users-sessions-create, body.devise-registrations-new {
   padding: 0;
 }
 
-div.login-page {
+div.ls-page {
   min-height: 100vh;
   background: url(image-path("login-min.jpg")) no-repeat center fixed;
   background-size: cover;
   opacity: 0;
   animation: fade-in 1.5s forwards;
 
-  & > div.login-header {
+  & > div.ls-header {
     height: 3em;
     padding: 1em 2em;
     display: flex;
     justify-content: space-between;
     & > div > p {
       margin: 0;
-      color: $login-header-color;
+      color: $ls-header-color;
       font-size: 1.2rem;
       font-weight: bold;
     }
-    & > div.login-header-website {
+    & > div.ls-header-website {
       & > p {
         & > a {
-          color: $login-header-color;
+          color: $ls-header-color;
           text-decoration: none;
           &:hover {
             color: white;
@@ -34,11 +34,11 @@ div.login-page {
         }
       }
     }
-    & > div.login-header-signup {
+    & > div.ls-header-signup, & > div.ls-header-login {
       & > p {
         text-align: right;
-        & > span.signup > a {
-          color: $login-header-signup-color;
+        & > span.signup > a, & > span.login > a {
+          color: $ls-header-signup-color;
           text-decoration: none;
           &:hover {
             color: white;
@@ -53,7 +53,6 @@ div.login-page {
     display: flex;
     justify-content: center;
     & > div.login-form-container {
-
       & > div.login-logo-container {
         text-align: center;
         & > img {
@@ -70,7 +69,7 @@ div.login-page {
             padding-left: 0.5em;
           }
           & > input {
-            @include login_input_field($login-input-background-color);
+            @include login_input_field($ls-input-background-color);
             padding-left: 0.8em;
             &:focus {
               outline: none;
@@ -79,15 +78,57 @@ div.login-page {
         }
         & > div.login-form-submit {
           & > input {
-            @include login_input_field($login-submit-background-color);
+            @include login_input_field($ls-submit-background-color);
             color: white;
             font-weight: bold;
             margin-top: 20px;
             &:hover {
               cursor: pointer;
               background-color: white;
-              color: $login-submit-background-color;
-              border: 2px solid $login-submit-background-color;
+              color: $ls-submit-background-color;
+              border: 2px solid $ls-submit-background-color;
+            }
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & > div.signup-main {
+    margin-top: 7em;
+    display: flex;
+    justify-content: center;
+    & > div.signup-form-container {
+      & > form.new_user {
+        & > div.signup-form-field {
+          margin-bottom: 2em;
+          & > label {
+            font-size: 1rem;
+            margin-bottom: 0.5em;
+            padding-left: 0.5em;
+          }
+          & > input {
+            @include login_input_field($ls-input-background-color);
+            padding-left: 0.8em;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        & > div.signup-form-submit {
+          & > input {
+            @include login_input_field($ls-submit-background-color);
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
+            &:hover {
+              cursor: pointer;
+              background-color: white;
+              color: $ls-submit-background-color;
+              border: 2px solid $ls-submit-background-color;
             }
             &:focus {
               outline: none;

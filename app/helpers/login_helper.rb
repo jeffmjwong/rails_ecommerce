@@ -13,4 +13,10 @@ module LoginHelper
     end
   end
 
+  def login_link
+    content_tag :span, class: 'login' do
+      link_to 'Log In', new_session_path(resource_name)
+    end
+  end
+
 end
