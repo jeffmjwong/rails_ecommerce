@@ -53,21 +53,9 @@
           <p>$<%= sprintf('%.2f', product.unitprice) %></p>
         </td>
         <td class="sc-date-container shop">
-          <% if user_signed_in? %>
-            <p>
-              <%= product.created_at.in_time_zone(current_user.timezone).strftime("%I:%M%P %Z UTC%z") %>
-            </p>
-            <p>
-              <%= product.created_at.in_time_zone(current_user.timezone).strftime("%d %b %Y") %>
-            </p>
-          <% else %>
-            <p>
-              <%= product.created_at.in_time_zone(product.user.timezone).strftime("%I:%M%P %Z UTC%z") %>
-            </p>
-            <p>
-              <%= product.created_at.in_time_zone(product.user.timezone).strftime("%d %b %Y") %>
-            </p>
-          <% end %>
+          <p>
+            <%= product.created_at.in_time_zone("Brisbane").strftime("%d %b %Y") %>
+          </p>
         </td>
       </tr>
     <% end %>
