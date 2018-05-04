@@ -1,14 +1,28 @@
 <div class="navbar-container">
-  <div class="navbar-home">
-    <p><%= link_to 'Home', root_path %></p>
+  <div class="navbar-searchbar-container">
+    <%= form_with url: products_path, method: :get do |form| %>
+      <div class="navbar-searchbar">
+        <%= form.text_field :product_name %>
+      </div>
+
+      <div class="searchbar-submit">
+        <%= form.submit "Search product" %>
+      </div>
+    <% end %>
   </div>
-  <div class="navbar-shop">
-    <p><%= show_shop(current_user) %></p>
-  </div>
-  <div class="navbar-cart">
-    <p><%= show_cart(current_user) %></p>
-  </div>
-  <div class="navbar-login">
-    <%= show_login_link(current_user) %>
+
+  <div class="navbar-buttons">
+    <div class="navbar-home">
+      <p><%= link_to 'Home', root_path %> | </p>
+    </div>
+    <div class="navbar-shop">
+      <%= show_shop(current_user) %>
+    </div>
+    <div class="navbar-cart">
+      <%= show_cart(current_user) %>
+    </div>
+    <div class="navbar-login">
+      <%= show_login_link(current_user) %>
+    </div>
   </div>
 </div>

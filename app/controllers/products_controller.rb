@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    filter_params.each do |key, value|
+      @products = @products.public_send(key, value) if value.present?
+    end
   end
 
   def show
@@ -76,5 +79,9 @@ class ProductsController < ApplicationController
 
     def check_current_user
       redirect_to root_path if current_user != @product.user
+    end
+
+    def filter_params
+      params.slice(:product_name)
     end
 end
