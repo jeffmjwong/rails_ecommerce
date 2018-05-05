@@ -1,19 +1,19 @@
 <div class="navbar-container">
   <div class="navbar-searchbar-container">
-    <%= form_with url: products_path, method: :get do |form| %>
+    <%= form_with url: products_path, local: true, method: :get, html: { class: "searchbar-form" } do |form| %>
       <div class="navbar-searchbar">
-        <%= form.text_field :product_name %>
+        <%= form.text_field :product_name, value: "Search for any products..." %>
       </div>
 
       <div class="searchbar-submit">
-        <%= form.submit "Search product" %>
+        <%= form.submit "" %>
       </div>
     <% end %>
   </div>
 
   <div class="navbar-buttons">
     <div class="navbar-home">
-      <p><%= link_to 'Home', root_path %> | </p>
+      <p><%= link_to 'Home', root_path %></p>
     </div>
     <div class="navbar-shop">
       <%= show_shop(current_user) %>

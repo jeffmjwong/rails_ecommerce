@@ -7,13 +7,46 @@ div.navbar-container {
   justify-content: space-between;
 
   & > div.navbar-searchbar-container {
-
+    width: 48vw;
+    display: flex;
+    align-items: center;
+    & > form.searchbar-form {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      & > div.navbar-searchbar {
+        width: 100%;
+        & > input {
+          height: 2em;
+          width: 100%;
+          border: none;
+          border-radius: 3px 0 0 3px;
+          font-size: 1.2rem;
+          padding: 0 0 0 0.5em;
+        }
+      }
+      & > div.searchbar-submit {
+        display: flex;
+        align-items: center;
+        & > input {
+          background: url(image-path("search.gif")) center;
+          background-size: cover;
+          width: 40px;
+          height: 40px;
+          border: none;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 
   & > div.navbar-buttons {
     display: flex;
     justify-content: flex-end;
     & > div {
+      margin: 0 0.5em;
       display: flex;
       align-items: center;
       & > p {
