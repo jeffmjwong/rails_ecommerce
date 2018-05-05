@@ -1,23 +1,45 @@
-<table>
+<div class="sc-header">
+  <div class="all-products-filter-container">
+
+  </div>
+</div>
+
+
+<table class="sc-main-table shop">
   <thead>
     <tr>
-      <th>Photo</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Unitprice</th>
+      <th colspan="2"></th>
+      <th>Price</th>
+      <th>Date Added</th>
     </tr>
   </thead>
 
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= image_tag product.photo_url(:homepage) %></td>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.unitprice %></td>
+        <td class="sc-image-container shop">
+          <%= link_to image_tag(product.photo_url(:homepage)), product_path(product) %>
+        </td>
+        <td class="sc-name-container shop">
+          <p>
+            <%= link_to product.name, product_path(product) %>
+            by <%= username_link(product.user) %>
+          </p>
+          <p>Quantity available: <%= product_quantity(product) %></p>
+          <p>
+            <%= product_rating(product) %>
+          </p>
+        </td>
+        <td class="sc-price-container shop">
+          <p><%= product_price(product) %></p>
+        </td>
+        <td class="sc-date-container shop">
+          <p>
+            <%= product.created_at.in_time_zone("Brisbane").strftime("%d %b %Y") %>
+          </p>
+        </td>
       </tr>
     <% end %>
   </tbody>
+
 </table>

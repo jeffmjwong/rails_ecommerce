@@ -5,11 +5,15 @@ class ProductsController < ApplicationController
 
   def home
     current_user.create_cart_after_user_sign_up if user_signed_in?
-    @recent_products = Product.where("quantity > ?", 0).order(created_at: :desc)
+    @recent_products = Product.where("quantity > ?", 0).order(created_at: :desc).limit(10)
   end
 
   def index
-    @products = Product.all
+    if !user_signed_in?
+      @products = Product.all.order(avgrating: :desc)
+    else
+      @products = Product.where.not(user: current_user).order(avgrating: :desc)
+    end
     filter_params.each do |key, value|
       @products = @products.public_send(key, value) if value.present?
     end
