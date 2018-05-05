@@ -5,7 +5,9 @@ class Product < ApplicationRecord
   has_many :baskets, dependent: :delete_all
   has_many :reviews, dependent: :delete_all
 
-  scope(:product_name, -> (prod_name) { where('LOWER(name) like ?', "%#{prod_name.downcase}%") })
+  scope(:product_name, -> (prod_name) { where("LOWER(name) like ?", "%#{prod_name.downcase}%") })
+  scope(:min_price, -> (min_price) { where("unitprice >= ?", min_price) })
+  scope(:max_price, -> (max_price) { where("unitprice <= ?", max_price) })
 
   def avg_rating
     total_reviews = 0.0

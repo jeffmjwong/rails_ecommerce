@@ -9,11 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    if !user_signed_in?
-      @products = Product.all.order(avgrating: :desc)
-    else
-      @products = Product.where.not(user: current_user).order(avgrating: :desc)
-    end
+    @products = Product.all.order(avgrating: :desc)
     filter_params.each do |key, value|
       @products = @products.public_send(key, value) if value.present?
     end
@@ -89,6 +85,6 @@ class ProductsController < ApplicationController
     end
 
     def filter_params
-      params.slice(:product_name)
+      params.slice(:product_name, :min_price, :max_price)
     end
 end

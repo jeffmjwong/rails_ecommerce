@@ -20,7 +20,7 @@ module NavbarHelper
     if user_signed_in?
       content_tag :p do
         concat link_to user.username, user_path(user)
-        concat " ("
+        concat "("
         concat link_to 'Logout', destroy_user_session_path, method: :delete
         concat ")"
       end

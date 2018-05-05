@@ -1,1 +1,41 @@
-<h1 style="margin: 3em 1em">Sorry, the item you searched does not exist</h1>
+<div class="sc-header">
+  <h1>Main Products Page</h1>
+</div>
+
+
+<div class="products-main-container">
+
+  <div class="products-filter-form-container">
+    <%= form_with url: products_path, method: :get, local: true, html: { class: "filter-form" } do |form| %>
+    <div class="filter-form-title">
+      <p>Search filter</p>
+    </div>
+
+    <div class="filter-form-field-name">
+      <%= form.label :product_name, "Product name:" %>
+      <%= form.text_field :product_name, value: params[:product_name] %>
+    </div>
+
+    <div class="filter-form-field-price">
+      <p>Price:</p>
+      <div class="filter-form-price">
+        <%= form.label :min_price, "Min" %>
+        <%= form.text_field :min_price, value: params[:min_price], class: "min-price" %>
+      </div>
+      <div class="filter-form-price">
+        <%= form.label :max_price, "Max" %>
+        <%= form.text_field :max_price, value: params[:max_price], class: "max-price" %>
+      </div>
+    </div>
+
+    <div class="filter-form-action">
+      <%= form.submit "Filter" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="not-found">
+    <h1>Sorry, the search criteria you entered was not found.</h1>
+  </div>
+
+</div>

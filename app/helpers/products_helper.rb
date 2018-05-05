@@ -11,10 +11,4 @@ module ProductsHelper
     end
   end
 
-  def display_for_own_product(product)
-    if product.user == current_user
-
-    end
-  end
-
 end

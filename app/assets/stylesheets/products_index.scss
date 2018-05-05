@@ -1,3 +1,68 @@
-div.all-products-filter-container {
+div.products-main-container {
   display: flex;
+
+  & > div.products-filter-form-container {
+    width: 20%;
+    margin: 1.5em;
+    & > form.filter-form {
+      background-color: #dddddd;
+      padding: 1.5em;
+      label, p {
+        font-size: 0.8rem;
+        margin: 0;
+      }
+      input {
+        height: 1.5em;
+        border: none;
+        border-radius: 2px;
+        font-size: 0.8rem;
+        padding-left: 0.3em;
+      }
+      & > div.filter-form-title {
+        & > p {
+          font-size: 0.9rem;
+          font-weight: bold;
+        }
+      }
+      & > div.filter-form-field-name {
+        margin: 1.5em 0;
+        & > input {
+          width: 100%;
+        }
+      }
+      & > div.filter-form-field-price {
+        margin: 1.5em 0;
+        & > div.filter-form-price {
+          margin: 0.5em 0;
+          display: flex;
+          & > label {
+            margin-right: 0.5em;
+          }
+          & > input {
+            width: 50%;
+            &.min-price {
+              margin-left: 0.7em;
+            }
+            &.max-price {
+              margin-left: 0.5em;
+            }
+          }
+        }
+      }
+      & > div.filter-form-action > input:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  & > table.sc-main-table.products, & > div.not-found {
+    width: 80%;
+  }
+
+  & > div.not-found {
+    & > h1 {
+      font-weight: normal;
+    }
+  }
+
 }
