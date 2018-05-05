@@ -17,6 +17,9 @@ class ProductsController < ApplicationController
     filter_params.each do |key, value|
       @products = @products.public_send(key, value) if value.present?
     end
+    if !@products.present?
+      render 'not_found'
+    end
   end
 
   def show
