@@ -23,6 +23,9 @@ div.navbar-container {
           border-radius: 3px 0 0 3px;
           font-size: 1.2rem;
           padding: 0 0 0 0.5em;
+          &:focus::placeholder {
+            color: transparent;
+          }
         }
       }
       & > div.searchbar-submit {
