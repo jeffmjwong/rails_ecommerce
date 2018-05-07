@@ -4,7 +4,7 @@
   </h1>
 </div>
 
-<div>
+<div class="cart-main-container">
   <table class="sc-main-table cart">
     <thead>
       <tr>
@@ -15,7 +15,7 @@
     </thead>
 
     <tbody>
-      <% @cart.baskets.order(:id).each do |basket| %>
+      <% @baskets.each do |basket| %>
         <tr>
           <td class="sc-image-container">
             <%= link_to image_tag(basket.product.photo_url(:homepage)), product_path(basket.product) %>
@@ -29,14 +29,10 @@
               </span>
             </p>
             <p>Quantity available:
-              <% if basket.product.quantity > 0 %>
-                <%= basket.product.quantity %>
-              <% else %>
-                <span>Out of stock</span>
-              <% end %>
+              <%= product_quantity(basket.product) %>
             </p>
             <p>
-              Ratings: 3 / 5 |
+              <%= product_rating(basket.product) %> |
               <span class="remove-item">
                 <%= link_to 'Remove item', baskets_path(basket_id: basket.id), method: :delete,
                       data: { confirm: 'This item will be removed from your cart. Are you sure?' } %>
@@ -71,24 +67,26 @@
 
   <div class="product-payment-container">
     <div class="payment-form-container">
-      <%= form_with url: charges_path, class: "payment-form" do %>
+      <%= form_with url: charges_path(cart_id: @cart.id, total_price: @subtotal_price), class: "payment-form" do %>
         <% if flash[:error].present? %>
           <div id="error_explanation">
             <p><%= flash[:error] %></p>
           </div>
         <% end %>
         <div class="payment-message">
-          <p>Like this item?</p>
-          <p>Buy it with just one click!</p>
+          <p>Checkout</p>
         </div>
+        <label class="payment-items">
+          <span>Total number of items: <%= @subtotal_items %></span>
+        </label>
         <label class="payment-amount">
-          <span>Amount: $<%= sprintf('%.2f', @subtotal_price) %></span>
+          <span>Total amount: $<%= sprintf('%.2f', @subtotal_price) %></span>
         </label>
 
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="A month's subscription"
-                data-amount="500"
+                data-description="Payment Checkout"
+                data-amount="<%= @subtotal_price * 100 %>"
                 data-locale="auto"></script>
       <% end %>
     </div>

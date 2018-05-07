@@ -25,7 +25,8 @@ class ChargesController < ApplicationController
   end
 
   def multiple
-    @product = Product.find(params[:product_id])
+    @cart = Cart.find(params[:cart_id])
+    @total_price = (params[:total_price].to_f * 100).to_i
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -34,7 +35,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => (@product.unitprice * 100).to_i,
+      :amount      => @total_price,
       :description => 'riverSite customer',
       :currency    => 'aud'
     )
@@ -45,7 +46,12 @@ class ChargesController < ApplicationController
         redirect_to new_charge_path
     end
 
-    @product.update(quantity: (@product.quantity - 1))
+    @cart.baskets.each do |basket|
+      if basket.quantity > 0
+        basket.product.update(quantity: (basket.product.quantity - basket.quantity))
+        basket.destroy
+      end
+    end
   end
 
 end

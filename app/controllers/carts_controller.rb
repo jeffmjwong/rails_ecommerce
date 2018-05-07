@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   def show
     @cart = Cart.find(params[:id])
     check_user
+    @baskets = @cart.baskets.order(:created_at)
     @cart.check_product_quantity
     initialize_subtotal
   end

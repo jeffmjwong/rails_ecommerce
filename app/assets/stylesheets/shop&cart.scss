@@ -117,3 +117,31 @@ table.sc-main-table {
     }
   }
 }
+
+div.cart-main-container {
+  display: flex;
+  & > div.product-payment-container {
+    width: 25%;
+    margin: 1em;
+    & > div.payment-form-container {
+      border: 2px solid orange;
+      box-shadow: $box-shadow-add-item;
+      border-radius: 5px;
+      padding: 2em;
+      p {
+        font-weight: bold;
+      }
+      & > form.payment-form {
+        & > div.payment-message {
+          margin-bottom: 2em;
+          & > p {
+            margin: 0;
+          }
+        }
+        & > label.payment-amount {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}
