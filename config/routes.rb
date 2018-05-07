@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     post '/reviews', to: 'reviews#create'
   end
   resources :carts, only: :show
-  resources :charges
 
+  post '/charge', to: 'charges#one', as: 'charge'
+  post '/charges', to: 'charges#multiple', as: 'charges'
   get '/users/:id/user_shop', to: 'users#user_shop', as: 'user_shop'
   post '/baskets', to: 'baskets#create'
   patch '/baskets', to: 'baskets#update'

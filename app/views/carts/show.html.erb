@@ -4,66 +4,94 @@
   </h1>
 </div>
 
-<table class="sc-main-table cart">
-  <thead>
-    <tr>
-      <th colspan="2"></th>
-      <th>Price</th>
-      <th>Quantity</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cart.baskets.order(:id).each do |basket| %>
+<div>
+  <table class="sc-main-table cart">
+    <thead>
       <tr>
-        <td class="sc-image-container">
-          <%= link_to image_tag(basket.product.photo_url(:homepage)), product_path(basket.product) %>
-        </td>
-        <td class="sc-name-container">
-          <p>
-            <%= link_to basket.product.name, product_path(basket.product) %>
-            by
-            <span class="user-name">
-              <%= link_to basket.product.user.username, user_path(basket.product.user) %>
-            </span>
-          </p>
-          <p>Quantity available:
-            <% if basket.product.quantity > 0 %>
-              <%= basket.product.quantity %>
-            <% else %>
-              <span>Out of stock</span>
-            <% end %>
-          </p>
-          <p>
-            Ratings: 3 / 5 |
-            <span class="remove-item">
-              <%= link_to 'Remove item', baskets_path(basket_id: basket.id), method: :delete,
-                    data: { confirm: 'This item will be removed from your cart. Are you sure?' } %>
-            </span>
-          </p>
-        </td>
-        <td class="sc-price-container">
-          <p>$<%= sprintf('%.2f', basket.product.unitprice) %></p>
-        </td>
-        <td class="sc-quantity-container">
-          <%= form_with url: baskets_path(basket_id: basket.id), method: :patch do |form| %>
+        <th colspan="2"></th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cart.baskets.order(:id).each do |basket| %>
+        <tr>
+          <td class="sc-image-container">
+            <%= link_to image_tag(basket.product.photo_url(:homepage)), product_path(basket.product) %>
+          </td>
+          <td class="sc-name-container">
             <p>
-              <%= form.select :quantity, options_for_select((0..basket.product.quantity), basket.quantity),
-                  {}, { onchange: 'this.form.submit();' } %>
+              <%= link_to basket.product.name, product_path(basket.product) %>
+              by
+              <span class="user-name">
+                <%= link_to basket.product.user.username, user_path(basket.product.user) %>
+              </span>
             </p>
-          <% end %>
+            <p>Quantity available:
+              <% if basket.product.quantity > 0 %>
+                <%= basket.product.quantity %>
+              <% else %>
+                <span>Out of stock</span>
+              <% end %>
+            </p>
+            <p>
+              Ratings: 3 / 5 |
+              <span class="remove-item">
+                <%= link_to 'Remove item', baskets_path(basket_id: basket.id), method: :delete,
+                      data: { confirm: 'This item will be removed from your cart. Are you sure?' } %>
+              </span>
+            </p>
+          </td>
+          <td class="sc-price-container">
+            <p>$<%= sprintf('%.2f', basket.product.unitprice) %></p>
+          </td>
+          <td class="sc-quantity-container">
+            <%= form_with url: baskets_path(basket_id: basket.id), method: :patch do |form| %>
+              <p>
+                <%= form.select :quantity, options_for_select((0..basket.product.quantity), basket.quantity),
+                    {}, { onchange: 'this.form.submit();' } %>
+              </p>
+            <% end %>
+          </td>
+        </tr>
+        <% @subtotal_items += basket.quantity %>
+        <% @subtotal_price += basket.quantity * basket.product.unitprice %>
+      <% end %>
+
+      <tr>
+        <td colspan="4" class="sc-subtotal">
+          <p>
+            Subtotal (<%= @subtotal_items %> items): $<%= sprintf('%.2f', @subtotal_price) %>
+          </p>
         </td>
       </tr>
-      <% @subtotal_items += basket.quantity %>
-      <% @subtotal_price += basket.quantity * basket.product.unitprice %>
-    <% end %>
+    </tbody>
+  </table>
 
-    <tr>
-      <td colspan="4" class="sc-subtotal">
-        <p>
-          Subtotal (<%= @subtotal_items %> items): $<%= sprintf('%.2f', @subtotal_price) %>
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <div class="product-payment-container">
+    <div class="payment-form-container">
+      <%= form_with url: charges_path, class: "payment-form" do %>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <div class="payment-message">
+          <p>Like this item?</p>
+          <p>Buy it with just one click!</p>
+        </div>
+        <label class="payment-amount">
+          <span>Amount: $<%= sprintf('%.2f', @subtotal_price) %></span>
+        </label>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="500"
+                data-locale="auto"></script>
+      <% end %>
+    </div>
+  </div>
+
+</div>

@@ -122,7 +122,7 @@
 
   <div class="product-payment-container">
     <div class="payment-form-container">
-      <%= form_with url: charges_path(product_id: @product.id), class: "payment-form" do %>
+      <%= form_with url: charge_path(product_id: @product.id), class: "payment-form" do %>
         <% if flash[:error].present? %>
           <div id="error_explanation">
             <p><%= flash[:error] %></p>
