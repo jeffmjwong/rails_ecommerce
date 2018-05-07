@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     post '/reviews', to: 'reviews#create'
   end
   resources :carts, only: :show
+  resources :charges
 
   get '/users/:id/user_shop', to: 'users#user_shop', as: 'user_shop'
   post '/baskets', to: 'baskets#create'

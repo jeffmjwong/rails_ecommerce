@@ -66,3 +66,6 @@ gem "cloudinary", "~> 1.9"
 
 # Added at 2018-04-19 20:46:20 +1000 by jeffwong:
 gem "pg", "~> 1.0"
+
+# Added at 2018-05-07 14:15:24 +1000 by jeffwong:
+gem "stripe", "~> 3.13"
