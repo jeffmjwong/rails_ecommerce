@@ -4,9 +4,10 @@ div.product-main-container {
   display: flex;
 
   & > div.product-container {
-    width: 80%;
+    width: 75%;
+    padding-right: 3em;
     & > div.product-info-container {
-      padding: 3em;
+      padding: 3em 0 3em 3em;
       display: flex;
       & > div.product-image-container {
         width: 20%;
@@ -157,7 +158,28 @@ div.product-main-container {
     }
   }
 
-  & > div.product-one-click-payment-container {
-    width: 20%;
+  & > div.product-payment-container {
+    width: 25%;
+    margin: 1em;
+    & > div.payment-form-container {
+      border: 2px solid orange;
+      box-shadow: $box-shadow-add-item;
+      border-radius: 5px;
+      padding: 2em;
+      p {
+        font-weight: bold;
+      }
+      & > form.payment-form {
+        & > div.payment-message {
+          margin-bottom: 2em;
+          & > p {
+            margin: 0;
+          }
+        }
+        & > label.payment-amount {
+          margin-bottom: 1em;
+        }
+      }
+    }
   }
 }

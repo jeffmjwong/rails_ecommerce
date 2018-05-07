@@ -120,8 +120,29 @@
     <% end %>
   </div>
 
-  <div class="product-one-click-payment-container">
-    <div>asdf</div>
+  <div class="product-payment-container">
+    <div class="payment-form-container">
+      <%= form_with url: charges_path(product_id: @product.id), class: "payment-form" do %>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <div class="payment-message">
+          <p>Like this item?</p>
+          <p>Buy it with just one click!</p>
+        </div>
+        <label class="payment-amount">
+          <span>Amount: $<%= sprintf('%.2f', @product.unitprice) %></span>
+        </label>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="<%= @product.unitprice * 100 %>"
+                data-locale="auto"></script>
+      <% end %>
+    </div>
   </div>
 
 </div>
