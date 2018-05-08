@@ -1,0 +1,27 @@
+div.user-page {
+  & > div.user-page-title {
+    text-align: center;
+  }
+  & > div.user-stats-container {
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+    & > div.user-stats {
+      width: 50%;
+      box-shadow: $box-shadow-top-bottom;
+      padding: 3em;
+      & > div.user-ratings {
+        margin-bottom: 2em;
+      }
+      & > div.user-shop {
+        & > p > a {
+          color: #728cff;
+          text-decoration: none;
+          &:hover {
+            color: orange;
+          }
+        }
+      }
+    }
+  }
+}
