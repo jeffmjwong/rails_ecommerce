@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>One of your items has been bought by a customer.</h1>
+    <p>Item name: <%= @product.name %></p>
+    <p>Original quantity: <%= @product.quantity %></p>
+    <p>New quantity: <%= @product.quantity - 1 %></p>
+    <p>Money paid: $<%= sprintf('%.2f', @product.unitprice) %></p>
+  </body>
+</html>

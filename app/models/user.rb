@@ -8,6 +8,7 @@ class User < ApplicationRecord
               uniqueness: { case_sensitive: false }
   has_many :products, dependent: :delete_all
   has_one :cart, dependent: :delete
+  after_create :send_welcome_email
 
   def create_cart_after_user_sign_up
     Cart.create(user: self) if !self.cart.present?

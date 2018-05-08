@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>This is the confirmation for your purchases.</h1>
+    <% @cart.baskets.each do |basket| %>
+      <% if basket.quantity > 0 %>
+        <p>Item name: <%= basket.product.name %></p>
+        <p>Purchase quantity: <%= basket.quantity %></p>
+        <p>Price per unit: $<%= sprintf('%.2f', basket.product.unitprice) %></p>
+      <% end %>
+    <% end %>
+    <h2>Total money paid: $<%= sprintf('%.2f', @total_price) %></h2>
+  </body>
+</html>
