@@ -13,4 +13,8 @@ class User < ApplicationRecord
     Cart.create(user: self) if !self.cart.present?
   end
 
+  def send_welcome_email
+    UserMailer.send_signup_email(self).deliver
+  end
+
 end
