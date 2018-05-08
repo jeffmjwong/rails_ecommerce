@@ -1,0 +1,28 @@
+div.admin-page-title {
+  text-align: center;
+}
+
+div.admin-table-container {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  & > table.admin-table {
+    box-shadow: $box-shadow-top-bottom;
+    padding: 2em 3em;
+  }
+  a {
+    text-decoration: none;
+    &.shop-link {
+      color: magenta;
+    }
+    &.cart-link {
+      color: chartreuse;
+    }
+    &.delete-link {
+      color: crimson;
+    }
+  }
+  a:hover {
+    color: darkblue;
+  }
+}

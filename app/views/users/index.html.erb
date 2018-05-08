@@ -1,32 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="admin-page-title">
+  <h1>All Users</h1>
+</div>
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Admin</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<div class="admin-table-container">
+  <table class="admin-table">
+    <thead>
       <tr>
-        <td><%= user.admin %></td>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'Market Place', root_path %><br>
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= user.admin %></td>
+          <td><%= link_to 'Shop', user_shop_path(user), class: "shop-link" %></td>
+          <td><%= link_to 'Cart', cart_path(user.cart), class: "cart-link" %></td>
+          <td><%= link_to 'Delete user', user, method: :delete,
+                  data: { confirm: 'Are you sure?' }, class: "delete-link" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
