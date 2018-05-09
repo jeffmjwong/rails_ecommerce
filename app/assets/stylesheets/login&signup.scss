@@ -14,11 +14,17 @@ div.ls-page {
     padding: 1em 2em;
     display: flex;
     justify-content: space-between;
+    @include mobile {
+      display: block;
+    }
     & > div > p {
       margin: 0;
       color: $ls-header-color;
       font-size: 1.2rem;
       font-weight: bold;
+      @include mobile {
+        font-size: 1rem;
+      }
     }
     & > div.ls-header-website {
       & > p {
@@ -35,8 +41,14 @@ div.ls-page {
       }
     }
     & > div.ls-header-signup, & > div.ls-header-login {
+      @include mobile {
+        margin-top: 3em;
+      }
       & > p {
         text-align: right;
+        @include mobile {
+          text-align: center;
+        }
         & > span.signup > a, & > span.login > a {
           color: $ls-header-signup-color;
           text-decoration: none;
