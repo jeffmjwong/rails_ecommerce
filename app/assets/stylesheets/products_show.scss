@@ -2,16 +2,32 @@ div.product-main-container {
   width: 100%;
   margin: 3em 0;
   display: flex;
+  @include mobile {
+    display: block;
+  }
 
   & > div.product-container {
     width: 75%;
     padding-right: 3em;
+    @include mobile {
+      width: 100%;
+      padding: 0;
+    }
     & > div.product-info-container {
       padding: 3em 0 3em 3em;
       display: flex;
+      @include mobile {
+        padding: 1em 2em;
+        display: block;
+      }
       & > div.product-image-container {
         width: 20%;
         margin: 0 1em;
+        @include mobile {
+          width: 100%;
+          text-align: center;
+          margin: 0;
+        }
         & > img {
           margin-bottom: 1em;
         }
@@ -20,6 +36,9 @@ div.product-main-container {
         }
         & > div.product-average-rating-container {
           width: 150px;
+          @include mobile {
+            width: 100%;
+          }
           & > p {
             text-align: center;
             margin: 2px;
@@ -28,6 +47,10 @@ div.product-main-container {
       }
       & > div.product-details-container {
         width: 80%;
+        @include mobile {
+          width: 100%;
+          margin-top: 2em;
+        }
         & > div.product-name-container {
           & > p {
             & > span.product-name {
@@ -59,6 +82,9 @@ div.product-main-container {
     }
     & > div.product-review-header {
       margin: 2em 3em;
+      @include mobile {
+        margin: 2em;
+      }
       & > h1 {
         font-weight: normal;
         margin: 0;
@@ -66,14 +92,25 @@ div.product-main-container {
     }
     & > div.product-review-container {
       margin: 0 3em 3em 3em;
+      @include mobile {
+        border-bottom: 1px solid black;
+        margin: 3em 2em;
+      }
       & > div.product-review {
         width: 100%;
         border-top: 0.8px solid grey;
         padding: 1em 0;
         display: flex;
+        @include mobile {
+          display: block;
+        }
         & > div.product-review-user {
           width: 20%;
           margin: 0 1em;
+          @include mobile {
+            width: 100%;
+            margin-bottom: 2em;
+          }
           & > p {
             margin: 0.6em 0;
             &.user-name {
@@ -100,6 +137,10 @@ div.product-main-container {
         }
         & > div.product-review-content {
           width: 80%;
+          @include mobile {
+            width: 90%;
+            margin: 0 1em;
+          }
           & > p.review-title {
             font-weight: bold;
           }
@@ -161,6 +202,10 @@ div.product-main-container {
   & > div.product-payment-container {
     width: 25%;
     margin: 1em;
+    @include mobile {
+      width: auto;
+      margin: 1em 3em;
+    }
     & > div.payment-form-container {
       border: 2px solid orange;
       box-shadow: $box-shadow-add-item;
