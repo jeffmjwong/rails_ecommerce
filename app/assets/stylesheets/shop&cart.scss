@@ -43,6 +43,13 @@ table.sc-main-table {
       }
     }
   }
+  &.products {
+    & > thead > tr > th:last-child, & > tbody > tr > td:last-child {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
   & > thead {
     & > tr {
       height: 5em;
