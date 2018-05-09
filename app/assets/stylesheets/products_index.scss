@@ -63,6 +63,10 @@ div.products-main-container {
 
   & > table.sc-main-table.products, & > div.not-found {
     width: 80%;
+    @include mobile {
+      width: auto;
+      margin: 0.5em;
+    }
   }
 
   & > div.not-found {
