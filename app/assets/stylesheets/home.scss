@@ -6,8 +6,8 @@ div.home-header {
   height: 100vh;
   background: url(image-path("home-background.jpg")) no-repeat center fixed;
   background-size: cover;
-  @include phone {
-    height: 30em;
+  @include mobile {
+    height: auto;
   }
   div.home-header-website {
     padding: 3em 0 3em 10em;
