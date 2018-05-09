@@ -7,26 +7,37 @@ div.home-header {
   background: url(image-path("home-background.jpg")) no-repeat center fixed;
   background-size: cover;
   @include mobile {
-    height: auto;
+    position: relative;
   }
-  div.home-header-website {
+  & > div.home-header-website {
     padding: 3em 0 3em 10em;
-    p {
+    @include mobile {
+      padding: 1em;
+    }
+    & > p {
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
       margin: 0;
-      span.black {
+      & > span.black {
         color: black;
       }
     }
   }
-  div.home-header-title {
+  & > div.home-header-title {
     max-width: 500px;
     height: 20em;
     padding: 2em;
     margin: 15em 0 0 5em;
-    p {
+    @include mobile {
+      position: absolute;
+      top: 35%;
+      height: auto;
+      padding: 1em;
+      margin: 0;
+      display: block;
+    }
+    & > p {
       overflow: hidden;
       color: white;
       font-size: 2.7rem;
@@ -39,6 +50,12 @@ div.home-header {
     max-width: 500px;
     margin-left: 5em;
     display: flex;
+    @include mobile {
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      margin: 0;
+    }
     & > a.home-header-signup {
       @include home-header-buttons($home-signup-background, white, $home-signup-border);
     }
@@ -60,9 +77,13 @@ div.home-banner {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    @include mobile {
+      padding: 3em 2em;
+    }
     & > p {
       width: 100%;
       font-size: 2rem;
+      line-height: 1.3em;
       text-align: center;
       margin: 0.5em 0 0.2em 0;
     }
@@ -70,28 +91,34 @@ div.home-banner {
 }
 
 div.home-main {
-  // background: linear-gradient(135deg, hsla(311, 100%, 61%, 0.7), hsla(281, 64%, 38%, 0.7), hsla(251, 100%, 61%, 0.7));
   box-shadow: $box-shadow-top-bottom;
   padding: 2em 1em;
   margin-bottom: 5em;
-  div.home-main-new-release {
+  @include mobile {
+    box-shadow: none;
+    margin: 0;
+  }
+  & > div.home-main-new-release {
     padding-left: 1.5em;
-    p {
+    & > p {
       font-size: 1.2rem;
     }
   }
-  ul.home-main-products-list {
+  & > ul.home-main-products-list {
     list-style-type: none;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    li {
+    @include mobile {
+      display: block;
+    }
+    & > li {
       padding: 0.8em;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      div.product-info-container {
+      & > div.product-info-container {
         width: 100%;
         display: flex;
         flex-wrap: wrap;

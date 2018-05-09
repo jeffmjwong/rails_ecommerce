@@ -5,11 +5,22 @@ div.navbar-container {
   padding: 1.5em 2em;
   display: flex;
   justify-content: space-between;
+  @include mobile {
+    position: relative;
+    height: 18em;
+  }
 
   & > div.navbar-searchbar-container {
     width: 48vw;
     display: flex;
     align-items: center;
+    @include mobile {
+      position: absolute;
+      bottom: 0;
+      width: 90%;
+      padding: 1em;
+      display: block;
+    }
     & > form.searchbar-form {
       width: 100%;
       display: flex;
@@ -48,10 +59,20 @@ div.navbar-container {
   & > div.navbar-buttons {
     display: flex;
     justify-content: flex-end;
+    @include mobile {
+      width: 100%;
+      display: block;
+    }
     & > div {
       margin: 0 0.5em;
       display: flex;
       align-items: center;
+      @include mobile {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 1.5em 0;
+        display: block;
+      }
       & > p {
         color: $navbar-text-color;
         font-size: 1.2rem;
@@ -75,6 +96,9 @@ div.navbar-container {
       justify-content: flex-end;
       & > p {
         text-align: right;
+        @include mobile {
+          text-align: center;
+        }
         & > span.login > a {
         color: $navbar-login-color;
         text-decoration: none;
