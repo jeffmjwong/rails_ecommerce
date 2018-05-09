@@ -26,6 +26,22 @@ table.sc-main-table {
     & > thead > tr > th > a.add-item {
       @include button;
     }
+    & > thead > tr > th:last-child, & > tbody > tr > td:last-child {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+  &.cart {
+    @include mobile {
+      width: auto;
+    }
+    & > thead > tr > th:first-child, & > tbody > tr > td:nth-child(2),
+    & > tbody > tr:last-child {
+      @include mobile {
+        display: none;
+      }
+    }
   }
   & > thead {
     & > tr {
@@ -39,24 +55,12 @@ table.sc-main-table {
             text-decoration: none;
           }
         }
-        &:last-child {
-          @include mobile {
-            display: none;
-          }
-        }
       }
     }
   }
   & > tbody {
     & > tr {
       height: 15em;
-      & > td {
-        &:last-child {
-          @include mobile {
-            display: none;
-          }
-        }
-      }
       & > td.sc-image-container {
         width: 20%;
         & > a {
@@ -132,9 +136,16 @@ table.sc-main-table {
 
 div.cart-main-container {
   display: flex;
+  @include mobile {
+    display: block;
+  }
   & > div.product-payment-container {
     width: 25%;
     margin: 1em;
+    @include mobile {
+      width: auto;
+      margin: 2em;
+    }
     & > div.payment-form-container {
       border: 2px solid orange;
       box-shadow: $box-shadow-add-item;

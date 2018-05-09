@@ -8,7 +8,8 @@
   <table class="sc-main-table cart">
     <thead>
       <tr>
-        <th colspan="2"></th>
+        <th colspan="1"></th>
+        <th colspan="1"></th>
         <th>Price</th>
         <th>Quantity</th>
       </tr>
@@ -40,7 +41,7 @@
             </p>
           </td>
           <td class="sc-price-container">
-            <p>$<%= sprintf('%.2f', basket.product.unitprice) %></p>
+            <p><%= product_price(basket.product) %></p>
           </td>
           <td class="sc-quantity-container">
             <%= form_with url: baskets_path(basket_id: basket.id), method: :patch do |form| %>

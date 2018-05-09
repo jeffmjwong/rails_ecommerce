@@ -1,9 +1,15 @@
 div.products-main-container {
   display: flex;
+  @include mobile {
+    display: block;
+  }
 
   & > div.products-filter-form-container {
     width: 20%;
     margin: 1.5em;
+    @include mobile {
+      width: 90%;
+    }
     & > form.filter-form {
       background-color: #dddddd;
       padding: 1.5em;

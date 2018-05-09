@@ -30,6 +30,9 @@ div.product-new-edit-page {
           border-radius: 3px;
           font-size: 1rem;
           padding: 0.25em;
+          @include mobile {
+            width: 100%;
+          }
           &.product-form-name {
             height: 1.8em;
           }
