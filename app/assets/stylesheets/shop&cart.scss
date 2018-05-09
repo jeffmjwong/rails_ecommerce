@@ -35,8 +35,13 @@ table.sc-main-table {
         text-align: right;
         &:first-child {
           text-align: center;
-          & > a{
+          & > a {
             text-decoration: none;
+          }
+        }
+        &:last-child {
+          @include mobile {
+            display: none;
           }
         }
       }
@@ -45,6 +50,13 @@ table.sc-main-table {
   & > tbody {
     & > tr {
       height: 15em;
+      & > td {
+        &:last-child {
+          @include mobile {
+            display: none;
+          }
+        }
+      }
       & > td.sc-image-container {
         width: 20%;
         & > a {
