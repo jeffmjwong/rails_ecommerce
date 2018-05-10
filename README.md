@@ -55,4 +55,34 @@ To copy and setup this web app in local machine, do the following steps:
 
 ## 7. Project Plan
 
-## 8. Future Development
+ + Day 1 to 2 - User stories, ERD and wireframes
+ + Day 2 to 4 - Setting up models and attributes
+ + Day 3 to 7 - Implement app features
+ + Day 5 to 9 - Styling, code refactor and deployment
+ + Day 9 to 10 - Design documentation and assignment submission
+
+## 8. List of Tools
+
+1. Ruby - Main programming language
+2. Rails - Web development framework
+3. SCSS - CSS preprocessor for web app styling
+4. Heroku - Deployment web hosting
+5. Namecheap - Custom domain name
+6. PostgreSQL - Database
+7. Devise - User Authentication
+8. Carrierwave - Image uploads
+9. Cloudinary - Image cloud hosting
+10. Stripe - Payment system
+11. Gmail - Transactional email system
+12. Dotenv - Environment keys
+13. Git - Version control
+14. GitHub - Open source code base
+15. Trello - User stories
+16. Draw.io - ERD and wireframes
+17. Atom - Text editor
+18. Code review with peers
+
+## 9. Future Development
+ - Implement internal messaging system
+ - Implement Stripe Connect so that buyer can make payment directly to seller
+ - Introduce user ratings system
