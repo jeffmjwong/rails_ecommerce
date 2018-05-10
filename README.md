@@ -1,6 +1,6 @@
 # README
 
-Link to app: [riversite.xyz](www.riversite.xyz)
+Link to app: [riversite.xyz](http://riversite.xyz)
 
 Link to GitHub repository: [https://github.com/jeffmjwong/rails_two_sided_market_place](https://github.com/jeffmjwong/rails_two_sided_market_place)
 
