@@ -3,7 +3,7 @@ module LoginHelper
   def home_link
     content_tag :p do
       concat link_to 'riverSite', root_path
-      concat content_tag :span, '.com', class: 'white'
+      concat content_tag :span, '.xyz', class: 'white'
     end
   end
 
