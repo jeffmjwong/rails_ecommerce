@@ -82,7 +82,11 @@ To copy and setup this web app in local machine, do the following steps:
 17. Atom - Text editor
 18. Code review with peers
 
-## 9. Future Development
+## 9. Code Review
+
+![Code Review](/app/assets/images/code-review.png)
+
+## 10. Future Development
  - Implement internal messaging system
  - Implement Stripe Connect so that buyer can make payment directly to seller
  - Introduce user ratings system
