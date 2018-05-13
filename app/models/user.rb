@@ -8,6 +8,7 @@ class User < ApplicationRecord
               uniqueness: { case_sensitive: false }
   has_many :products, dependent: :delete_all
   has_one :cart, dependent: :delete
+  has_many :reviews, dependent: :delete_all
   after_create :send_welcome_email
 
   def create_cart_after_user_sign_up
