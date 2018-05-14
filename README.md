@@ -2,7 +2,7 @@
 
 Link to app: [riversite.xyz](http://riversite.xyz)
 
-Link to GitHub repository: [https://github.com/jeffmjwong/rails_two_sided_market_place](https://github.com/jeffmjwong/rails_two_sided_market_place)
+Link to GitHub repository: [https://github.com/jeffmjwong/rails_ecommerce](https://github.com/jeffmjwong/rails_ecommerce)
 
 ## 1. Summary
 This web app is a two-sided marketplace project that was designed and built as one of Coder Academy's major assignments. The app is built end-to-end using Ruby on Rails framework. Third party APIs such as Stripe(payment system) and Gmail were utilised for some of the features in the app.
